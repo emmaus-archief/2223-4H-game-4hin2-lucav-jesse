@@ -61,14 +61,21 @@ var tekenAlles = function() {
 
   // kogel
 
+ 
   // speler
+  function tekenAlles() {
   fill("white");
   rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("black");
+  fill("green");
   ellipse(spelerX, spelerY, 10, 10);
+ }
 
+  
+tekenAlles();
+
+  
   // punten en health
-
+  
 };
 
 /**
