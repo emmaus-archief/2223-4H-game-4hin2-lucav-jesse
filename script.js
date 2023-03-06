@@ -31,7 +31,31 @@ var spelerY = 600; // y-positie van speler
  */
 var beweegAlles = function() {
   // speler
+  if(keyIsPressed){
+   if(key == 'w')
+     spelerY = spelerY - 4;
+ } 
+ if(keyIsPressed){
+   if(key == 'a')
+     spelerX = spelerX - 4;
+ }
+  if(keyIsPressed){
+   if(key == 's')
+     spelerY = spelerY + 4;
+ }
+  if(keyIsPressed){
+   if(key == 'd')
+     spelerX = spelerX + 4;
+ }
+  background(0,0,255);
 
+  // coordinaten speler 
+  
+  fill(255,255,255);
+  var label = spelerX + " , " + spelerY;
+  text(label, spelerX + 40, spelerY + 20);
+
+  
   // vijand
 
   // kogel
@@ -68,11 +92,8 @@ var tekenAlles = function() {
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("green");
   ellipse(spelerX, spelerY, 10, 10);
- }
-
-  
+ }  
 tekenAlles();
-
   
   // punten en health
   
