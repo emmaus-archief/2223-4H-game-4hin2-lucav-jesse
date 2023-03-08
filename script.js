@@ -29,26 +29,33 @@ var spelerY = 600; // y-positie van speler
 /**
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
+// speler
 var beweegAlles = function() {
-  // speler
   if(keyIsPressed){
    if(key == 'w')
-     spelerY = spelerY - 4;
+     spelerY = spelerY - 5;
  } 
  if(keyIsPressed){
    if(key == 'a')
-     spelerX = spelerX - 4;
+     spelerX = spelerX - 5;
  }
   if(keyIsPressed){
    if(key == 's')
-     spelerY = spelerY + 4;
+     spelerY = spelerY + 5;
  }
   if(keyIsPressed){
    if(key == 'd')
-     spelerX = spelerX + 4;
+     spelerX = spelerX + 5;
  }
   background(0,0,255);
 
+
+  // coordinaten muis
+
+  fill(255,255,255);
+  var label2 = mouseX + " , " + mouseY;
+  text(label2, mouseX + 20, mouseY + 10);
+  
   // coordinaten speler 
   
   fill(255,255,255);
@@ -79,8 +86,9 @@ var verwerkBotsing = function() {
  * Tekent spelscherm
  */
 var tekenAlles = function() {
-  // achtergrond
-
+  // speelveld
+ 
+  
   // vijand
 
   // kogel
@@ -90,7 +98,7 @@ var tekenAlles = function() {
   function tekenAlles() {
   fill("white");
   rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("green");
+  fill("black");
   ellipse(spelerX, spelerY, 10, 10);
  }  
 tekenAlles();
