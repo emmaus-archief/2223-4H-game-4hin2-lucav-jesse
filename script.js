@@ -31,6 +31,7 @@ var spelerY = 600; // y-positie van speler
  */
 // speler
 var beweegAlles = function() {
+
   if(keyIsPressed){
    if(key == 'w')
      spelerY = spelerY - 5;
@@ -47,22 +48,21 @@ var beweegAlles = function() {
    if(key == 'd')
      spelerX = spelerX + 5;
  }
-  background(0,0,255);
 
 
-  // coordinaten muis
+  if (spelerX < 50) {
+       spelerX = 50;
+  }
+  if (spelerX > 1250) {
+       spelerX = 1250;
+  }
+  if (spelerY < 50) {
+    spelerY = 50;
+  }
+  if (spelerY > 675) {
+    spelerY= 675;
+  }
 
-  fill(255,255,255);
-  var label2 = mouseX + " , " + mouseY;
-  text(label2, mouseX + 20, mouseY + 10);
-  
-  // coordinaten speler 
-  
-  fill(255,255,255);
-  var label = spelerX + " , " + spelerY;
-  text(label, spelerX + 40, spelerY + 20);
-
-  
   // vijand
 
   // kogel
@@ -87,21 +87,29 @@ var verwerkBotsing = function() {
  */
 var tekenAlles = function() {
   // speelveld
- 
+  background(0,0,255);
+// coordinaten muis
+
+  fill(255,255,255);
+  var label2 = mouseX + " , " + mouseY;
+  text(label2, mouseX + 20, mouseY + 10);
   
+  // coordinaten speler 
+  
+  fill(255,255,255);
+  var label = spelerX + " , " + spelerY;
+  text(label, spelerX + 40, spelerY + 20);
+
+
   // vijand
 
   // kogel
 
- 
   // speler
-  function tekenAlles() {
   fill("white");
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
-  ellipse(spelerX, spelerY, 10, 10);
- }  
-tekenAlles();
+  ellipse(spelerX, spelerY, 10, 10); 
   
   // punten en health
   
