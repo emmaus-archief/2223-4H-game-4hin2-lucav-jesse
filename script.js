@@ -32,35 +32,31 @@ var spelerY = 600; // y-positie van speler
 // speler
 var beweegAlles = function() {
 
-  if(keyIsPressed){
-   if(key == 'w')
-     spelerY = spelerY - 5;
- } 
- if(keyIsPressed){
-   if(key == 'a')
+  if(keyIsDown(65)) {
      spelerX = spelerX - 5;
- }
-  if(keyIsPressed){
-   if(key == 's')
-     spelerY = spelerY + 5;
- }
-  if(keyIsPressed){
-   if(key == 'd')
+ } 
+ if (keyIsDown(68)) {
      spelerX = spelerX + 5;
+ }
+  if (keyIsDown(87)) {
+     spelerY = spelerY - 5;
+ }
+  if (keyIsDown(83)) {
+     spelerY = spelerY + 5;
  }
 
 
   if (spelerX < 50) {
        spelerX = 50;
   }
-  if (spelerX > 1250) {
-       spelerX = 1250;
+  if (spelerX > 1225) {
+       spelerX = 1225;
   }
   if (spelerY < 50) {
     spelerY = 50;
   }
   if (spelerY > 675) {
-    spelerY= 675;
+    spelerY = 675;
   }
 
   // vijand
@@ -87,7 +83,7 @@ var verwerkBotsing = function() {
  */
 var tekenAlles = function() {
   // speelveld
-  background(0,0,255);
+  background(0,0,0);
 // coordinaten muis
 
   fill(255,255,255);
