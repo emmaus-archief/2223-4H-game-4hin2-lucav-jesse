@@ -19,8 +19,8 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 600; // x-positie van speler
-var spelerY = 600; // y-positie van speler
+var spelerX = 625; // x-positie van speler
+var spelerY = 350; // y-positie van speler
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -83,7 +83,14 @@ var verwerkBotsing = function() {
  */
 var tekenAlles = function() {
   // speelveld
-  background(0,0,0);
+  background(0, 133, 133);
+  
+  line(25, 25, 25, 700);
+  line(25, 700, 1250, 700);
+  line(1250, 700, 1250, 25);
+  line(1250, 25, 25, 25)
+  
+  
 // coordinaten muis
 
   fill(255,255,255);
