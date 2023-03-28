@@ -19,8 +19,10 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 625; // x-positie van speler
-var spelerY = 350; // y-positie van speler
+var spelerX = 505; // x-positie van speler
+var spelerY = 360; // y-positie van speler
+var punten = 0; // punten in de game
+var health = 100; // hp in de game
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -49,14 +51,14 @@ var beweegAlles = function() {
   if (spelerX < 50) {
        spelerX = 50;
   }
-  if (spelerX > 1225) {
-       spelerX = 1225;
+  if (spelerX > 960) {
+       spelerX = 960;
   }
-  if (spelerY < 50) {
-    spelerY = 50;
+  if (spelerY < 65) {
+    spelerY = 65;
   }
-  if (spelerY > 675) {
-    spelerY = 675;
+  if (spelerY > 655) {
+    spelerY = 655;
   }
 
   // vijand
@@ -83,35 +85,25 @@ var verwerkBotsing = function() {
  */
 var tekenAlles = function() {
   // speelveld
-  background(0, 133, 133);
-
-  var vakjes = [ "1","2","3"];
+  
+background("blue");
+  
+  var vakjes = [ "1","2","3","4","5","6","7","8","9","10","11","12"];
   
   for (var j = 0; j < vakjes.length; j++) {
-fill(233,233,233)
-    
-  rect(j*50,0,50,50);
+  fill(233,233,233)  
+  rect(j*80+25, 40, 80, 80);
+  rect(j*80+25, 120, 80, 80);
+  rect(j*80+25, 200, 80, 80);
+  fill("red")
+  rect(185, 200, 80, 80)
+  fill(233,233,233) 
+  rect(j*80+25, 280, 80, 80);
+  rect(j*80+25, 360, 80, 80);
+  rect(j*80+25, 440, 80, 80);
+  rect(j*80+25, 520, 80, 80);
+  rect(j*80+25, 600, 80, 80);
   }
-
-    
-  line(25, 25, 25, 700);
-  line(25, 700, 1250, 700);
-  line(1250, 700, 1250, 25);
-  line(1250, 25, 25, 25)
-  
-  
-// coordinaten muis
-
-  fill(255,255,255);
-  var label2 = mouseX + " , " + mouseY;
-  text(label2, mouseX + 20, mouseY + 10);
-  
-  // coordinaten speler 
-  
-  fill(255,255,255);
-  var label = spelerX + " , " + spelerY;
-  text(label, spelerX + 40, spelerY + 20);
-
 
   // vijand
 
@@ -124,7 +116,31 @@ fill(233,233,233)
   ellipse(spelerX, spelerY, 10, 10); 
   
   // punten en health
+    if (spelerX < 291 & spelerX > 159 & spelerY < 306 & spelerY > 174) {
+      spelerX = 505;
+      spelerY= 360;
+      health= health - 5;
+  }
+
+  // scoreboard
+  fill("white");
+  rect(1020, 40, 225, 640);
+  textSize(40);
+  fill("black");
+  text("Scoreboard", 1030,90);
+  textSize(25);
+  text("Levens: " + health + "/100", 1050, 130)
+
+  textSize(25);
+// coordinaten muis
+  fill(0,0,0);
+  var label2 = mouseX + " , " + mouseY;
+  text(label2, mouseX + 20, mouseY + 10);
   
+  // coordinaten speler 
+  fill(0,0,0);
+  var label = spelerX + " , " + spelerY;
+  text(label, spelerX + 40, spelerY + 20);
 };
 
 /**
@@ -133,6 +149,9 @@ fill(233,233,233)
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
+  if(health === 0){
+    return true;
+  }
   return false;
 };
 
@@ -150,7 +169,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+  background("blue");
 }
 
 /**
