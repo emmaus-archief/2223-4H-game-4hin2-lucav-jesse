@@ -84,7 +84,16 @@ var verwerkBotsing = function() {
 var tekenAlles = function() {
   // speelveld
   background(0, 133, 133);
+
+  var vakjes = [ "1","2","3"];
   
+  for (var j = 0; j < vakjes.length; j++) {
+fill(233,233,233)
+    
+  rect(j*50,0,50,50);
+  }
+
+    
   line(25, 25, 25, 700);
   line(25, 700, 1250, 700);
   line(1250, 700, 1250, 25);
