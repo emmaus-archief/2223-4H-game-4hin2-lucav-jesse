@@ -5,7 +5,6 @@
    Begin met dit template voor je game opdracht,
    voeg er je eigen code aan toe.
  */
-
 /*
  * instellingen om foutcontrole van je code beter te maken 
  */
@@ -23,6 +22,11 @@ var spelerX = 505; // x-positie van speler
 var spelerY = 360; // y-positie van speler
 var punten = 0; // punten in de game
 var health = 100; // hp in de game
+
+// images
+var img1;
+var img2;
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -48,11 +52,11 @@ var beweegAlles = function() {
  }
 
 
-  if (spelerX < 50) {
-       spelerX = 50;
+  if (spelerX < 27) {
+       spelerX = 27;
   }
-  if (spelerX > 960) {
-       spelerX = 960;
+  if (spelerX > 930) {
+       spelerX = 930;
   }
   if (spelerY < 65) {
     spelerY = 65;
@@ -73,7 +77,7 @@ var beweegAlles = function() {
  */
 var verwerkBotsing = function() {
   // botsing speler tegen vijand
-
+  
   // botsing kogel tegen vijand
 
   // update punten en health
@@ -86,23 +90,22 @@ var verwerkBotsing = function() {
 var tekenAlles = function() {
   // speelveld
   
-background("blue");
+  image(img1, 0, 0);
   
-  var vakjes = [ "1","2","3","4","5","6","7","8","9","10","11","12"];
+  
+  var vakjes = [ 0,0,0,1,0,0,0,0,0,0,1,0];
   
   for (var j = 0; j < vakjes.length; j++) {
-  fill(233,233,233)  
-  rect(j*80+25, 40, 80, 80);
-  rect(j*80+25, 120, 80, 80);
-  rect(j*80+25, 200, 80, 80);
-  fill("red")
-  rect(185, 200, 80, 80)
-  fill(233,233,233) 
-  rect(j*80+25, 280, 80, 80);
-  rect(j*80+25, 360, 80, 80);
-  rect(j*80+25, 440, 80, 80);
-  rect(j*80+25, 520, 80, 80);
-  rect(j*80+25, 600, 80, 80);
+
+    if (vakjes[j] === 0) {
+      fill(233,233,233);
+      rect(j*80+25, 200, 80, 80);
+    }
+    if (vakjes[j] === 1) {
+      fill("red");
+      rect(j*80+25, 200, 80, 80);
+    }
+
   }
 
   // vijand
@@ -110,17 +113,9 @@ background("blue");
   // kogel
 
   // speler
-  fill("white");
-  rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("black");
-  ellipse(spelerX, spelerY, 10, 10); 
+  image(img2, spelerX, spelerY, 55, 77.5);
   
   // punten en health
-    if (spelerX < 291 & spelerX > 159 & spelerY < 306 & spelerY > 174) {
-      spelerX = 505;
-      spelerY= 360;
-      health= health - 5;
-  }
 
   // scoreboard
   fill("white");
@@ -160,6 +155,15 @@ var checkGameOver = function() {
 /* ********************************************* */
 
 /**
+ * preload
+ * deze code wordt 1x uitgevoerd voor setup voor het laden van plaatjes
+ */
+function preload() {
+  img1 = loadImage('afbeeldingen/achtergrond-foto.jpg');
+  img2 = loadImage('afbeeldingen/pngkey.com-random-guy-png-3999503.png');
+}
+
+/**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
  * de p5 library, zodra het spel geladen is in de browser
@@ -167,9 +171,6 @@ var checkGameOver = function() {
 function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
-
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  background("blue");
 }
 
 /**
