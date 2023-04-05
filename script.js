@@ -26,6 +26,7 @@ var health = 100; // hp in de game
 // images
 var img1;
 var img2;
+var img3;
 
 
 /* ********************************************* */
@@ -68,6 +69,7 @@ var beweegAlles = function() {
   // vijand
 
   // kogel
+
 };
 
 /**
@@ -90,22 +92,28 @@ var verwerkBotsing = function() {
 var tekenAlles = function() {
   // speelveld
   
-  image(img1, 0, 0);
+  image(img1, 0, 0, 1280, 720);
   
   
-  var vakjes = [ 0,0,0,1,0,0,0,0,0,0,1,0];
+  var vakjes = [
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0]
+               ];
   
-  for (var j = 0; j < vakjes.length; j++) {
-
-    if (vakjes[j] === 0) {
+  for (var j = 0; j < vakjes.length[0]; j++) {
+    for(var i = 0; i < vakjes.length; i++) {
+      if (vakjes[j] === 0) {
       fill(233,233,233);
-      rect(j*80+25, 200, 80, 80);
+      rect(j*80+25, i*200, 80, 80);
     }
     if (vakjes[j] === 1) {
       fill("red");
-      rect(j*80+25, 200, 80, 80);
+      rect(j*80+25, i*200, 80, 80);
     }
-
+    }
   }
 
   // vijand
@@ -116,7 +124,7 @@ var tekenAlles = function() {
   image(img2, spelerX, spelerY, 55, 77.5);
   
   // punten en health
-
+  
   // scoreboard
   fill("white");
   rect(1020, 40, 225, 640);
@@ -161,6 +169,7 @@ var checkGameOver = function() {
 function preload() {
   img1 = loadImage('afbeeldingen/achtergrond-foto.jpg');
   img2 = loadImage('afbeeldingen/pngkey.com-random-guy-png-3999503.png');
+  img3 = loadImage('afbeeldingen/coin.gif');
 }
 
 /**
