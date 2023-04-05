@@ -21,12 +21,15 @@ var spelStatus = SPELEN;
 var spelerX = 505; // x-positie van speler
 var spelerY = 360; // y-positie van speler
 var punten = 0; // punten in de game
-var health = 100; // hp in de game
+var health = 10; // hp in de game
 
 // images
 var img1;
 var img2;
 var img3;
+var img4;
+var img5;
+var img6;
 
 
 /* ********************************************* */
@@ -121,18 +124,19 @@ var tekenAlles = function() {
   // kogel
 
   // speler
-  image(img2, spelerX, spelerY, 55, 77.5);
+  image(img2, spelerX, spelerY, 74, 100);
   
   // punten en health
   
   // scoreboard
-  fill("white");
-  rect(1020, 40, 225, 640);
+  image(img4, 1010, 0, 912, 735)
   textSize(40);
+  fill("lime");
+  text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1040, 90);
+  textSize(30);
+  text("Levens: " + health + "/10", 1050, 200)
   fill("black");
-  text("Scoreboard", 1030,90);
-  textSize(25);
-  text("Levens: " + health + "/100", 1050, 130)
+  rect(1010, 0 , 10, 720);
 
   textSize(25);
 // coordinaten muis
@@ -168,8 +172,10 @@ var checkGameOver = function() {
  */
 function preload() {
   img1 = loadImage('afbeeldingen/achtergrond-foto.jpg');
-  img2 = loadImage('afbeeldingen/pngkey.com-random-guy-png-3999503.png');
+  img2 = loadImage('afbeeldingen/idlecharacter.gif');
   img3 = loadImage('afbeeldingen/coin.gif');
+  img4 = loadImage('afbeeldingen/junglewood.jpeg');
+  img5 = loadImage('afbeeldingen/idelcharacter2.gif');
 }
 
 /**
