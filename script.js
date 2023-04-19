@@ -18,10 +18,30 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 var spelStatus = SPELEN;
 
-var spelerX = 505; // x-positie van speler
-var spelerY = 360; // y-positie van speler
+// mogelijkheden voor de richting van vijandjes en speler
+const LEFT = 0;
+const RIGHT = 1;
+
 var punten = 0; // punten in de game
 var health = 10; // hp in de game
+
+// speelveld
+  var vakjes = [
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0],
+               [ 0,0,0,1,0,0,0,0,0,0,1,0]
+               ];
+
+//speler
+var spelerRichting = RIGHT;
+var spelerBeweging = false;
+var spelerX = 505; // x-positie van speler
+var spelerY = 360; // y-positie van speler
 
 // images
 var img1;
@@ -30,6 +50,7 @@ var img3;
 var img4;
 var img5;
 var img6;
+var img7;
 
 
 /* ********************************************* */
@@ -41,33 +62,49 @@ var img6;
  */
 // speler
 var beweegAlles = function() {
+// speler
 
-  if(keyIsDown(65)) {
-     spelerX = spelerX - 5;
- } 
- if (keyIsDown(68)) {
-     spelerX = spelerX + 5;
- }
-  if (keyIsDown(87)) {
-     spelerY = spelerY - 5;
- }
-  if (keyIsDown(83)) {
-     spelerY = spelerY + 5;
- }
+spelerBeweging = false //walk is standaard false
 
+if (keyIsDown(65)) {
+spelerX = spelerX - 5;
+spelerBeweging = true;
+spelerRichting = LEFT;
+}
 
-  if (spelerX < 27) {
-       spelerX = 27;
-  }
-  if (spelerX > 930) {
-       spelerX = 930;
-  }
-  if (spelerY < 65) {
-    spelerY = 65;
-  }
-  if (spelerY > 655) {
-    spelerY = 655;
-  }
+if (keyIsDown(68)) {
+spelerX = spelerX + 5;
+spelerBeweging = true;
+spelerRichting = RIGHT;
+}
+
+if (keyIsDown(87)) {
+spelerY = spelerY - 5;
+spelerBeweging= true;
+}
+  
+if (keyIsDown(83)) {
+spelerY = spelerY + 5;
+spelerBeweging = true;
+}
+
+  
+if (spelerX < 25) {
+spelerX = 25;
+}
+
+if (spelerX > 1255) {
+spelerX = 1255;
+}
+
+if (spelerY < 140) {
+spelerY = 140;
+}
+
+if (spelerY > 470) {
+spelerY = 470;
+}
+
 
   // vijand
 
@@ -98,23 +135,15 @@ var tekenAlles = function() {
   image(img1, 0, 0, 1280, 720);
   
   
-  var vakjes = [
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0]
-               ];
-  
-  for (var j = 0; j < vakjes.length[0]; j++) {
+  for (var j = 0; j < vakjes[0].length; j++) {
     for(var i = 0; i < vakjes.length; i++) {
-      if (vakjes[j] === 0) {
+      if (vakjes[i][j] === 0) {
       fill(233,233,233);
-      rect(j*80+25, i*200, 80, 80);
+      rect(j*80+25, i*80+30, 80, 80);
     }
-    if (vakjes[j] === 1) {
+    if (vakjes[i][j] === 1) {
       fill("red");
-      rect(j*80+25, i*200, 80, 80);
+      rect(j*80+25, i*80+30, 80, 80);
     }
     }
   }
@@ -124,14 +153,36 @@ var tekenAlles = function() {
   // kogel
 
   // speler
-  image(img2, spelerX, spelerY, 74, 100);
+
+
+  var imageToUse = img2;
+  
+if (spelerRichting === RIGHT && spelerBeweging === false) {
+imageToUse = img2;
+}
+
+if (spelerRichting === LEFT && spelerBeweging === false) {
+imageToUse = img5;
+}
+
+if (spelerRichting === RIGHT && spelerBeweging === true) {
+imageToUse = img6;
+}
+
+if (spelerRichting === LEFT && spelerBeweging === true) {
+imageToUse = img7;
+}
   
   // punten en health
   
   // scoreboard
-  image(img4, 1010, 0, 912, 735)
+  noSmooth()
+  image(imageToUse, spelerX, spelerY, 90, 145);
+  image(img4, 1020, 0, 1200, 720)
+  smooth()
+  
   textSize(40);
-  fill("lime");
+  fill("yellow");
   text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1040, 90);
   textSize(30);
   text("Levens: " + health + "/10", 1050, 200)
@@ -139,6 +190,7 @@ var tekenAlles = function() {
   rect(1010, 0 , 10, 720);
 
   textSize(25);
+
 // coordinaten muis
   fill(0,0,0);
   var label2 = mouseX + " , " + mouseY;
@@ -148,6 +200,7 @@ var tekenAlles = function() {
   fill(0,0,0);
   var label = spelerX + " , " + spelerY;
   text(label, spelerX + 40, spelerY + 20);
+  
 };
 
 /**
@@ -175,7 +228,10 @@ function preload() {
   img2 = loadImage('afbeeldingen/idlecharacter.gif');
   img3 = loadImage('afbeeldingen/coin.gif');
   img4 = loadImage('afbeeldingen/junglewood.jpeg');
-  img5 = loadImage('afbeeldingen/idelcharacter2.gif');
+  img5 = loadImage('afbeeldingen/idlecharacter2.gif');
+  img6 = loadImage('afbeeldingen/runningcharacter.gif');
+  img7 = loadImage('afbeeldingen/runningcharacter2.gif');
+  
 }
 
 /**
