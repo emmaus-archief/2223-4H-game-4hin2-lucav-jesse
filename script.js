@@ -27,21 +27,22 @@ var health = 10; // hp in de game
 
 // speelveld
   var vakjes = [
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0],
-               [ 0,0,0,1,0,0,0,0,0,0,1,0]
+               [ 1,2,1,0,1,0,0,0,0,3,3,1],
+               [ 1,3,0,3,3,1,1,0,0,2,0,3],
+               [ 2,1,1,0,0,0,0,0,0,1,3,0],
+               [ 0,0,0,0,3,0,0,1,0,0,0,0],
+               [ 3,1,1,0,0,0,0,0,0,3,3,0],
+               [ 0,1,0,3,3,0,3,0,0,3,0,1],
+               [ 3,1,1,0,1,3,0,3,0,0,1,2],
+               [ 0,2,1,1,3,3,1,0,3,0,3,0]
                ];
 
 //speler
 var spelerRichting = RIGHT;
 var spelerBeweging = false;
-var spelerX = 505; // x-positie van speler
-var spelerY = 360; // y-positie van speler
+var spelerX = 500; // x-positie van speler
+var spelerY = 355; // y-positie van speler
+var spelerGrootteX = 55;
 
 // images
 var img1;
@@ -51,6 +52,9 @@ var img4;
 var img5;
 var img6;
 var img7;
+var img8;
+var img9;
+var img10;
 
 
 /* ********************************************* */
@@ -67,42 +71,41 @@ var beweegAlles = function() {
 spelerBeweging = false //walk is standaard false
 
 if (keyIsDown(65)) {
-spelerX = spelerX - 5;
+spelerX = spelerX - 4;
 spelerBeweging = true;
 spelerRichting = LEFT;
 }
 
 if (keyIsDown(68)) {
-spelerX = spelerX + 5;
+spelerX = spelerX + 4;
 spelerBeweging = true;
 spelerRichting = RIGHT;
 }
 
 if (keyIsDown(87)) {
-spelerY = spelerY - 5;
+spelerY = spelerY - 4;
 spelerBeweging= true;
 }
   
 if (keyIsDown(83)) {
-spelerY = spelerY + 5;
+spelerY = spelerY + 4;
 spelerBeweging = true;
 }
-
   
-if (spelerX < 25) {
-spelerX = 25;
+if (spelerX < 15) {
+spelerX = 15;
 }
 
-if (spelerX > 1255) {
-spelerX = 1255;
+if (spelerX > 950) {
+spelerX = 950;
 }
 
-if (spelerY < 140) {
-spelerY = 140;
+if (spelerY < 20) {
+spelerY = 20;
 }
 
-if (spelerY > 470) {
-spelerY = 470;
+if (spelerY > 590) {
+spelerY = 590;
 }
 
 
@@ -140,10 +143,20 @@ var tekenAlles = function() {
       if (vakjes[i][j] === 0) {
       fill(233,233,233);
       rect(j*80+25, i*80+30, 80, 80);
+      image(img8, j*80+25, i*80+30, 80, 80);
     }
     if (vakjes[i][j] === 1) {
-      fill("red");
       rect(j*80+25, i*80+30, 80, 80);
+      image(img10, j*80+25, i*80+30, 80, 80);
+    }
+      if (vakjes[i][j] === 2) {
+      image(img8, j*80+25, i*80+30, 80, 80);
+      image(img3, j*80+7, i*80+10, 120, 120);
+    }
+      if (vakjes[i][j] === 3) {
+      fill(233,233,233);
+      rect(j*80+25, i*80+30, 80, 80);
+      image(img9, j*80+25, i*80+30, 80, 80);
     }
     }
   }
@@ -177,7 +190,7 @@ imageToUse = img7;
   
   // scoreboard
   noSmooth()
-  image(imageToUse, spelerX, spelerY, 90, 145);
+  image(imageToUse, spelerX, spelerY, spelerGrootteX, 75);
   image(img4, 1020, 0, 1200, 720)
   smooth()
   
@@ -186,6 +199,7 @@ imageToUse = img7;
   text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1040, 90);
   textSize(30);
   text("Levens: " + health + "/10", 1050, 200)
+  text("Punten: " + punten, 1050, 240)
   fill("black");
   rect(1010, 0 , 10, 720);
 
@@ -231,6 +245,9 @@ function preload() {
   img5 = loadImage('afbeeldingen/idlecharacter2.gif');
   img6 = loadImage('afbeeldingen/runningcharacter.gif');
   img7 = loadImage('afbeeldingen/runningcharacter2.gif');
+  img8 = loadImage('afbeeldingen/vloersteen.jpeg');
+  img9 = loadImage('afbeeldingen/vloersteen2.jpeg');
+  img10 = loadImage('afbeeldingen/lava.gif');
   
 }
 
