@@ -22,8 +22,8 @@ var spelStatus = SPELEN;
 const LEFT = 0;
 const RIGHT = 1;
 
-var punten = 0; // punten in de game
-var health = 10; // hp in de game
+var muntjes = 0; // muntjes gepakt in de game
+var health = 300; // hp in de game
 
 // speelveld
   var vakjes = [
@@ -36,6 +36,8 @@ var health = 10; // hp in de game
                [ 3,1,1,0,1,3,0,3,0,0,1,2],
                [ 0,2,1,1,3,3,1,0,3,0,3,0]
                ];
+// een vakje is 80x80 pixels
+// het eerste vakje staat op x=25 en y=30
 
 //speler
 var spelerRichting = RIGHT;
@@ -55,6 +57,10 @@ var img7;
 var img8;
 var img9;
 var img10;
+
+//tijd
+var tijd;
+var tijdOver = 60;
 
 
 /* ********************************************* */
@@ -121,7 +127,16 @@ spelerY = 590;
  * Updatet globale variabelen punten en health
  */
 var verwerkBotsing = function() {
-  // botsing speler tegen vijand
+  
+  var i = floor((spelerX)/80);
+  var j = floor((spelerY)/80);
+  // botsing speler met lava
+ if(vakjes[j][i] === 1){
+   health = health - 1;
+   spelerX = 500;
+   spelerY = 355;
+ }
+  
   
   // botsing kogel tegen vijand
 
@@ -140,19 +155,23 @@ var tekenAlles = function() {
   
   for (var j = 0; j < vakjes[0].length; j++) {
     for(var i = 0; i < vakjes.length; i++) {
+      // vakje (grijs)
       if (vakjes[i][j] === 0) {
       fill(233,233,233);
       rect(j*80+25, i*80+30, 80, 80);
       image(img8, j*80+25, i*80+30, 80, 80);
     }
+      // lava
     if (vakjes[i][j] === 1) {
       rect(j*80+25, i*80+30, 80, 80);
       image(img10, j*80+25, i*80+30, 80, 80);
     }
+      // muntjes
       if (vakjes[i][j] === 2) {
       image(img8, j*80+25, i*80+30, 80, 80);
       image(img3, j*80+7, i*80+10, 120, 120);
     }
+      // ander gekleurd vakje
       if (vakjes[i][j] === 3) {
       fill(233,233,233);
       rect(j*80+25, i*80+30, 80, 80);
@@ -198,8 +217,9 @@ imageToUse = img7;
   fill("yellow");
   text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1040, 90);
   textSize(30);
-  text("Levens: " + health + "/10", 1050, 200)
-  text("Punten: " + punten, 1050, 240)
+  text("Levens:  " + health + "/3", 1050, 200);
+  text("Muntjes:  " + muntjes + "/5", 1050, 240);
+  text("Tijd:  " + tijdOver +"s", 1050, 280);
   fill("black");
   rect(1010, 0 , 10, 720);
 
@@ -217,6 +237,16 @@ imageToUse = img7;
   
 };
 
+//tijd in game over
+function beginTijd () {
+  tijd = setInterval(updateTijd, 1000);
+}
+beginTijd();
+updateTijd();
+function updateTijd() {
+  tijdOver = tijdOver - 1;
+}
+
 /**
  * return true als het gameover is
  * anders return false
@@ -224,6 +254,12 @@ imageToUse = img7;
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is, of ...
   if(health === 0){
+    return true;
+  }
+  if(muntjes === 5){
+    return true;
+    }
+  if(tijdOver  <= 0){
     return true;
   }
   return false;
@@ -272,11 +308,21 @@ function draw() {
     verwerkBotsing();
     tekenAlles();
     if (checkGameOver()) {
-      spelStatus = GAMEOVER;
+    spelStatus = GAMEOVER;
     }
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-
+    fill(0,0,0);
+    rect(0,0,10000, 2000);
+    fill(255,255,255);
+    textSize(200);
+    text("GAMEOVER", 90, 200);
+    
+    textSize(100);
+    fill("lime")
+    text("Retry", 190, 500);
+    fill("red")
+    text("Quit", 950, 500);
   }
 }
