@@ -23,12 +23,20 @@ const LEFT = 0;
 const RIGHT = 1;
 
 var muntjes = 0; // muntjes gepakt in de game
-var health = 300; // hp in de game
+var health = 3; // hp in de game
+
+// score einde van de level
+var A;
+var B;
+var C;
+var D;
+var E;
+var F;
 
 // speelveld
   var vakjes = [
-               [ 1,2,1,0,1,0,0,0,0,3,3,1],
-               [ 1,3,0,3,3,1,1,0,0,2,0,3],
+               [ 1,2,1,0,1,0,0,0,0,3,3,1], 
+               [ 1,3,0,3,3,1,1,0,0,2,0,3],       
                [ 2,1,1,0,0,0,0,0,0,1,3,0],
                [ 0,0,0,0,3,0,0,1,0,0,0,0],
                [ 3,1,1,0,0,0,0,0,0,3,3,0],
@@ -57,10 +65,15 @@ var img7;
 var img8;
 var img9;
 var img10;
+var img11;
+var img12;
+var img13;
+var img14;
+var img15;
 
 //tijd
 var tijd;
-var tijdOver = 60;
+var tijdOver = 6000;
 
 
 /* ********************************************* */
@@ -97,6 +110,14 @@ if (keyIsDown(83)) {
 spelerY = spelerY + 4;
 spelerBeweging = true;
 }
+
+if(keyIsDown(87) && keyIsDown(83)) {
+  spelerBeweging = false;
+}
+
+if(keyIsDown(68) && keyIsDown(65)) {
+  spelerBeweging = false;
+}
   
 if (spelerX < 15) {
 spelerX = 15;
@@ -128,19 +149,20 @@ spelerY = 590;
  */
 var verwerkBotsing = function() {
   
-  var i = floor((spelerX)/80);
-  var j = floor((spelerY)/80);
+  var i = floor((spelerX+15)/80);
+  var j = floor((spelerY+40)/80);
   // botsing speler met lava
  if(vakjes[j][i] === 1){
    health = health - 1;
    spelerX = 500;
    spelerY = 355;
  }
-  
-  
+  // speler op muntje
+ if(vakjes[j][i] === 2){
+   muntjes = muntjes + 1;
+   vakjes[j][i] = 0;
+ }
   // botsing kogel tegen vijand
-
-  // update punten en health
 
 };
 
@@ -191,18 +213,22 @@ var tekenAlles = function() {
   
 if (spelerRichting === RIGHT && spelerBeweging === false) {
 imageToUse = img2;
+spelerGrootteX = 55;
 }
 
 if (spelerRichting === LEFT && spelerBeweging === false) {
 imageToUse = img5;
+spelerGrootteX = 55;
 }
 
 if (spelerRichting === RIGHT && spelerBeweging === true) {
 imageToUse = img6;
+spelerGrootteX = 100;
 }
 
 if (spelerRichting === LEFT && spelerBeweging === true) {
 imageToUse = img7;
+spelerGrootteX = 100;
 }
   
   // punten en health
@@ -215,12 +241,17 @@ imageToUse = img7;
   
   textSize(40);
   fill("yellow");
-  text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1040, 90);
+  text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1050, 90);
   textSize(30);
-  text("Levens:  " + health + "/3", 1050, 200);
-  text("Muntjes:  " + muntjes + "/5", 1050, 240);
-  text("Tijd:  " + tijdOver +"s", 1050, 280);
+  text("Levens:  " + health + "/3", 1070, 200);
+  text("Muntjes:  " + muntjes + "/5", 1070, 240);
+  text("Tijd:  " + tijdOver +"s", 1070, 280);
+  textSize(35);
   fill("black");
+  image(img11, 1120, 330, 70, 70);
+  image(img12, 1120, 430, 70, 70);
+  image(img13, 1120, 530, 70, 70);
+  image(img15, 1120, 630, 70, 70);
   rect(1010, 0 , 10, 720);
 
   textSize(25);
@@ -237,6 +268,18 @@ imageToUse = img7;
   
 };
 
+// menu buttons
+
+// info button
+/* 
+if(mouseIsPressed && mouseX > 1120 && mouseX < 1190 && mouseY > 330 && mouseY < 400){
+  fill("black");
+
+}
+*/
+
+
+
 //tijd in game over
 function beginTijd () {
   tijd = setInterval(updateTijd, 1000);
@@ -252,7 +295,7 @@ function updateTijd() {
  * anders return false
  */
 var checkGameOver = function() {
-  // check of HP 0 is , of tijd op is, of ...
+  // check of HP 0 is , of tijd op is, of muntjes allemaal gepakt zijn
   if(health === 0){
     return true;
   }
@@ -284,7 +327,11 @@ function preload() {
   img8 = loadImage('afbeeldingen/vloersteen.jpeg');
   img9 = loadImage('afbeeldingen/vloersteen2.jpeg');
   img10 = loadImage('afbeeldingen/lava.gif');
-  
+  img11 = loadImage('afbeeldingen/infobutton.png');
+  img12 = loadImage('afbeeldingen/retrybutton.png');
+  img13 = loadImage('afbeeldingen/pausebutton.png');
+  img14 = loadImage('afbeeldingen/playbutton.png');
+  img15 = loadImage('afbeeldingen/quitbutton.png');
 }
 
 /**
@@ -320,9 +367,47 @@ function draw() {
     text("GAMEOVER", 90, 200);
     
     textSize(100);
-    fill("lime")
+    fill("lime");
     text("Retry", 190, 500);
-    fill("red")
+    fill("red");
     text("Quit", 950, 500);
+
+  textSize(40);
+  if(muntjes === 5 && tijd > 0){
+            fill(255,255,255);
+            text("Score:", 600, 400);
+            fill(15, 173, 12);
+            text("A", 725, 400);
+}
+  if(muntjes === 4 && tijd > 0){
+            fill(255,255,255);
+            text("Score:", 600, 400);
+            fill(219, 74, 48);
+            text("B", 725, 400);
+  }
+    if(muntjes === 3 && tijd >= 0){
+            fill(255,255,255);
+            text("Score:", 600, 400);
+            fill(230, 130, 30);
+            text("C", 725, 400);
+    }
+      if(muntjes === 2 && tijd >= 0){
+            fill(255,255,255);
+            text("Score:", 600, 400);
+            fill(69, 105, 68);
+            text("D", 725, 400);
+      }
+        if(muntjes === 1 && tijd >= 0){
+            fill(255,255,255);
+            text("Score:", 600, 400);
+            fill(2, 34, 97);
+            text("E", 725, 400);
+          }
+          if(muntjes === 0 && tijd >= 0){
+            fill(255,255,255);
+            text("Score:", 600, 400);
+            fill(102, 78, 7);
+            text("F", 725, 400);
+          }
   }
 }
