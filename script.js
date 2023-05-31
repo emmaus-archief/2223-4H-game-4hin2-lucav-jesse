@@ -90,12 +90,14 @@ var img25;
 var img26;
 var img27;
 var img28;
+var img29;
+var img30;
 
 // tijd in de game
 var tijd = 60;
 
 // levels
-var level2;
+var level = 1;
 
 
 /* ********************************************* */
@@ -189,9 +191,72 @@ var levelScherm = function() {
   // button om terug te gaan naar main menu
   image(img19, 40, 600, 100, 100);
 
-  // levels
-  image
+  fill('white');
+  textSize(30);
+  
+  // level 1
+  image(img30, 120, 100, 252, 184);
+  image(img14, 216, 162, 80, 80);
+  text("Level 1", 200, 310);
 
+  // level 2
+  if(level >= 2){
+  image(img30, 492, 100, 252, 184);
+  image(img14, 588, 162, 80, 80);
+  text("Level 2", 572, 310);
+  }
+  else{
+  image(img30, 492, 100, 252, 184);
+  image(img28, 503, 100, 230, 200);
+  textSize(30);
+  text("Haal eerst level 1", 502, 310);
+  }
+
+  // level 3
+  if(level >= 3){
+  image(img30, 864, 100, 252, 184);
+  image(img14, 960, 162, 80, 80);
+  text("Level 3", 944, 310);
+  }
+  else{
+  image(img30, 864, 100, 252, 184);
+  image(img28, 875, 100, 230, 200);
+  text("Haal eerst level 2", 874, 310);
+  }
+
+  // level 4
+  if(level >= 4){
+  image(img30, 346, 400, 252, 184);
+  image(img14, 440, 462, 80, 80);
+  text("Level 4", 426, 610);
+  }
+  else{
+  image(img30, 346, 400, 252, 184);
+  image(img28, 357, 400, 230, 200);
+  text("Haal eerst level 3", 356, 610);
+  }
+
+  // level 5
+  if(level >= 5){
+  image(img30, 682, 400, 252, 184);
+  image(img14, 778, 462, 80, 80);
+  text("Level 5", 762, 610);
+  }
+  else{
+  image(img30, 682, 400, 252, 184);
+  image(img28, 693, 400, 230, 200);
+  text("Haal eerst level 4", 692, 610);
+  }
+
+  // ga level 1 spelen als je op play button klikt
+  if (mouseX > 216 && mouseX < 296 && mouseY > 162 && mouseY < 242) {
+    if (mouseIsPressed === true) {
+      spelStatus = SPELEN;
+    }
+  }
+
+
+  // ga naar main menu als je op pijltje terug klikt
   if (mouseX > 40 && mouseX < 140 && mouseY > 600 && mouseY < 700) {
     if (mouseIsPressed === true) {
       spelStatus = MAINMENU;
@@ -319,7 +384,7 @@ var beweegAlles = function() {
   // kogel
 
   // tijd
-  tijd = tijd - 0.0165;
+  tijd = tijd - 0.012375;
 
 };
 
@@ -414,6 +479,7 @@ var tekenAlles = function() {
   fill("yellow");
   text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1050, 90);
   textSize(30);
+  text("Level:  " + level, 1070, 160);
   text("Levens:  " + health + "/3", 1070, 200);
   text("Muntjes:  " + muntjes + "/5", 1070, 240);
   text("Tijd:  " + floor(tijd) + "s", 1070, 280);
@@ -428,14 +494,14 @@ var tekenAlles = function() {
   textSize(25);
 
   // coordinaten muis
-  fill(0, 0, 0);
-  var label2 = mouseX + " , " + mouseY;
-  text(label2, mouseX + 20, mouseY + 10);
+  // fill(0, 0, 0);
+  // var label2 = mouseX + " , " + mouseY;
+  // text(label2, mouseX + 20, mouseY + 10);
 
   // coordinaten speler 
-  fill(0, 0, 0);
-  var label = spelerX + " , " + spelerY;
-  text(label, spelerX + 40, spelerY + 20);
+  // fill(0, 0, 0);
+  // var label = spelerX + " , " + spelerY;
+  // text(label, spelerX + 40, spelerY + 20);
 
   /**  
    * Menu buttons in game 
@@ -544,6 +610,8 @@ function preload() {
   img26 = loadImage('afbeeldingen/buttonnummer5.png');
   img27 = loadImage('afbeeldingen/gameui.png');
   img28 = loadImage('afbeeldingen/levelslock.png');
+  img29 = loadImage('afbeeldingen/buttonnummer1.png');
+  img30 = loadImage('afbeeldingen/level1normaal.png');
 }
 
 /**
@@ -608,7 +676,7 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      level2 = unlocked;
+      level = 2;
     }
     if (muntjes === 4 && tijd > 0) {
       fill(255, 255, 255);
