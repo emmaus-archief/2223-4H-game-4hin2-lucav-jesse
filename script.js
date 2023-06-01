@@ -138,8 +138,7 @@ var mainMenu = function() {
     }
   }
 
-  image(img18, 280, 180);
-
+  image(img18, 280, 180); // text JUNGLE ESCAPE
 };
 
 
@@ -188,49 +187,81 @@ var levelScherm = function() {
   // achtergrond
   image(img16, 0, 0, 1280, 720);
 
+  // text bovenin
+  textSize(100);
+  fill("yellow");
+  text("𝐿𝐸𝒱𝐸𝐿𝒮", 460, 80)
+
   // button om terug te gaan naar main menu
   image(img19, 40, 600, 100, 100);
 
-  fill('white');
   textSize(30);
   
   // level 1
-  image(img30, 120, 100, 252, 184);
-  image(img14, 216, 162, 80, 80);
-  text("Level 1", 200, 310);
+  fill("yellow");
+  image(img30, 120, 150, 252, 184);
+  image(img14, 216, 212, 80, 80);
+  text("Level 1", 200, 360);
 
   // level 2
   if(level >= 2){
-  image(img30, 492, 100, 252, 184);
-  image(img14, 588, 162, 80, 80);
-  text("Level 2", 572, 310);
+  fill("yellow");
+  image(img30, 492, 150, 252, 184);
+  image(img14, 588, 212, 80, 80);
+  text("Level 2", 572, 360);
+
+  // ga level 2 spelen als je op play button klikt
+  if (mouseX > 588 && mouseX < 668 && mouseY > 212 && mouseY < 292) {
+    if (mouseIsPressed === true) {
+      spelStatus = SPELEN;
+    }
+  }
   }
   else{
-  image(img30, 492, 100, 252, 184);
-  image(img28, 503, 100, 230, 200);
+  fill("white");
+  image(img30, 492, 150, 252, 184);
+  image(img28, 503, 150, 230, 200);
   textSize(30);
-  text("Haal eerst level 1", 502, 310);
+  text("Haal eerst level 1", 502, 360);
   }
 
   // level 3
   if(level >= 3){
-  image(img30, 864, 100, 252, 184);
-  image(img14, 960, 162, 80, 80);
-  text("Level 3", 944, 310);
+  fill("yellow");
+  image(img30, 864, 150, 252, 184);
+  image(img14, 960, 212, 80, 80);
+  text("Level 3", 944, 360);
+
+  // ga level 3 spelen als je op play button klikt
+  if (mouseX > 960 && mouseX < 1040 && mouseY > 212 && mouseY < 292) {
+    if (mouseIsPressed === true) {
+      spelStatus = SPELEN;
+    }
+  }
   }
   else{
-  image(img30, 864, 100, 252, 184);
-  image(img28, 875, 100, 230, 200);
-  text("Haal eerst level 2", 874, 310);
+  fill("white");
+  image(img30, 864, 150, 252, 184);
+  image(img28, 875, 150, 230, 200);
+  text("Haal eerst level 2", 874, 360);
   }
 
   // level 4
   if(level >= 4){
+  fill("yellow");
   image(img30, 346, 400, 252, 184);
-  image(img14, 440, 462, 80, 80);
+  image(img14, 440, 462, 80, 80); // play button
   text("Level 4", 426, 610);
+    
+  // ga level 5 spelen als je op play button klikt
+  if (mouseX > 426 && mouseX < 506 && mouseY > 462 && mouseY < 542) {
+    if (mouseIsPressed === true) {
+      spelStatus = SPELEN;
+    }
+  }
   }
   else{
+  fill("white");
   image(img30, 346, 400, 252, 184);
   image(img28, 357, 400, 230, 200);
   text("Haal eerst level 3", 356, 610);
@@ -238,11 +269,20 @@ var levelScherm = function() {
 
   // level 5
   if(level >= 5){
+  fill("yellow");
   image(img30, 682, 400, 252, 184);
-  image(img14, 778, 462, 80, 80);
+  image(img14, 778, 462, 80, 80); // play button
   text("Level 5", 762, 610);
+    
+  // ga level 5 spelen als je op play button klikt
+  if (mouseX > 778 && mouseX < 858 && mouseY > 462 && mouseY < 542) {
+    if (mouseIsPressed === true) {
+      spelStatus = SPELEN;
+    }
+  }
   }
   else{
+  fill("white");
   image(img30, 682, 400, 252, 184);
   image(img28, 693, 400, 230, 200);
   text("Haal eerst level 4", 692, 610);
@@ -268,18 +308,19 @@ var levelScherm = function() {
  * Retry scherm om de game opnieuw te beginnen
 */
 var retryScherm = function() {
-  image(img27, 350, 150, 600, 500);
+  image(img27, 185, 150, 650, 500);
 
-  textSize(40);
-  fill("white");
+  textSize(35);
+  fill("yellow");
   text("Weet je zeker dat je wil restarten?", 250, 250);
+  text("Level: " + level, 450, 350);
 
-  image(img22, 360, 350, 100, 100); // Ja button
-  image(img15, 650, 350, 100, 100); // Nee button
+  image(img22, 320, 400, 100, 100); // Ja button
+  image(img15, 600, 400, 100, 100); // Nee button
 
 
   // Code om de game te restarten
-  if (mouseX > 540 && mouseX < 640 && mouseY > 300 && mouseY < 400) {
+  if (mouseX > 320 && mouseX < 420 && mouseY > 400 && mouseY < 500) {
     if (mouseIsPressed === true) {
       spelStatus = SPELEN;
       resetGlobalVariables();
@@ -287,7 +328,7 @@ var retryScherm = function() {
   }
 
   // Code voor de nee button 
-  if (mouseX > 740 && mouseX < 840 && mouseY > 300 && mouseY < 400) {
+  if (mouseX > 600 && mouseX < 700 && mouseY > 400 && mouseY < 500) {
     if (mouseIsPressed === true) {
       spelStatus = SPELEN;
     }
@@ -300,23 +341,27 @@ var retryScherm = function() {
 */
 var quitScherm = function() {
   //achtergrond
-  image(img16, 100, 100, 1080, 520);
+  image(img27, 185, 150, 650, 500);
 
-  textSize();
-  fill("white");
-  text("Weet je zeker dat je wil stoppen?", 100, 100);
-  rect(200, 175, 30, 30);
-  text("JA", 200, 200);
-  rect(200, 275, 60, 30);
-  text("NEE", 200, 300);
+  textSize(35);
+  fill("yellow");
+  text("Weet je zeker dat je wil stoppen?", 250, 250);
+  text("Level: " + level, 450, 350);
 
-  if (mouseX > 200 && mouseX < 230 && mouseY > 175 && mouseY < 205) {
+  
+  image(img22, 320, 400, 100, 100); // Ja button
+  image(img15, 600, 400, 100, 100); // Nee button
+
+  // code om naar mainmenu te gaan
+  if (mouseX > 320 && mouseX < 420 && mouseY > 400 && mouseY < 500) {
     if (mouseIsPressed === true) {
       spelStatus = MAINMENU;
       resetGlobalVariables();
     }
   }
-  if (mouseX > 200 && mouseX < 260 && mouseY > 275 && mouseY < 305) {
+
+  // Code voor de nee button 
+  if (mouseX > 600 && mouseX < 700 && mouseY > 400 && mouseY < 500) {
     if (mouseIsPressed === true) {
       spelStatus = SPELEN;
     }
@@ -330,7 +375,7 @@ var quitScherm = function() {
 var beweegAlles = function() {
   // speler
 
-  spelerBeweging = false //walk is standaard false
+  spelerBeweging = false // walk is standaard false
 
   if (keyIsDown(65)) {
     spelerX = spelerX - 4;
@@ -485,10 +530,9 @@ var tekenAlles = function() {
   text("Tijd:  " + floor(tijd) + "s", 1070, 280);
   textSize(35);
   fill("black");
-  image(img11, 1120, 330, 70, 70);
-  image(img12, 1120, 430, 70, 70);
-  image(img13, 1120, 530, 70, 70);
-  image(img15, 1120, 630, 70, 70);
+  image(img11, 1120, 330, 70, 70); // info button
+  image(img12, 1120, 430, 70, 70); // retry button 
+  image(img15, 1120, 530, 70, 70); // quit button
   rect(1010, 0, 10, 720);
 
   textSize(25);
@@ -515,7 +559,7 @@ var tekenAlles = function() {
   }
 
   // Quit button
-  if (mouseX > 1120 && mouseX < 1190 && mouseY > 630 && mouseY < 700) {
+  if (mouseX > 1120 && mouseX < 1190 && mouseY > 530 && mouseY < 600) {
     if (mouseIsPressed === true) {
       spelStatus = QUITSCHERM;
     }
