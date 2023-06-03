@@ -29,8 +29,16 @@ var spelStatus = MAINMENU;
 const LEFT = 0;
 const RIGHT = 1;
 
-var muntjes = 0; // muntjes gepakt in de game
-var health = 3; // hp in de game
+// muntjes gepakt in de game
+var muntjes1 = 0; // muntjes in level 1
+var muntjes2 = 0; // muntjes in level 2
+var muntjes3 = 0; // muntjes in level 3
+var muntjes4 = 0; // muntjes in level 4
+var muntjes5 = 0; // muntjes in level 5
+// hp in de game
+var health1en2 = 3; // hp voor level 1 en 2
+var health3en4 = 2; // hp voor level 3 en 4
+var health5 = 1;    // hp voor level 5
 
 // score einde van de level
 var A;
@@ -40,7 +48,7 @@ var D;
 var E;
 var F;
 
-// speelveld level 1
+// speelveld voor de levels (level staat erachter)
 var vakjes1 = [
   [1, 2, 1, 0, 1, 0, 0, 0, 0, 3, 3, 1],
   [1, 3, 0, 3, 3, 1, 1, 0, 0, 2, 0, 3],
@@ -50,6 +58,46 @@ var vakjes1 = [
   [0, 1, 0, 3, 3, 0, 3, 0, 0, 3, 0, 1],
   [3, 1, 1, 0, 1, 3, 0, 3, 0, 0, 1, 2],
   [0, 2, 1, 1, 3, 3, 1, 0, 3, 0, 3, 0]
+];
+var vakjes2 = [
+    [3, 1, 1, 1, 0, 0, 0, 1, 1, 0, 3, 0],
+    [0, 3, 0, 3, 2, 3, 0, 0, 0, 0, 1, 3],
+    [1, 3, 0, 0, 1, 0, 3, 0, 0, 1, 2, 0],
+    [2, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 3, 1, 1, 3, 0, 0, 3, 1, 0, 1],
+    [0, 0, 1, 2, 1, 0, 0, 1, 0, 1, 1, 1],
+    [0, 1, 0, 0, 3, 0, 3, 1, 3, 3, 0, 2]
+];
+var vakjes3 = [
+  [0, 1, 3, 0, 0, 0, 3, 0, 0, 2, 1, 0],
+  [0, 3, 0, 2, 1, 0, 0, 3, 0, 1, 1, 3],
+  [3, 1, 1, 1, 0, 3, 1, 3, 0, 3, 0, 0],
+  [1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+  [1, 0, 0, 0, 3, 0, 0, 0, 0, 1, 1, 2],
+  [0, 1, 3, 1, 0, 0, 3, 0, 0, 0, 1, 0],
+  [0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0],
+  [3, 0, 1, 3, 0, 2, 1, 0, 0, 3, 0, 3]
+];
+var vakjes4 = [
+  [2, 1, 0, 0, 1, 0, 0, 3, 0, 0, 0, 3],
+      [3, 1, 0, 3, 1, 2, 1, 1, 0, 3, 1, 0],
+      [0, 3, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1],
+      [1, 1, 0, 1, 0, 3, 0, 0, 0, 1, 2, 0],
+      [0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0],
+      [3, 2, 1, 0, 1, 0, 3, 0, 0, 1, 3, 0],
+      [0, 1, 1, 0, 3, 0, 0, 1, 0, 3, 0, 0],
+      [3, 0, 0, 3, 1, 1, 2, 1, 1, 0, 1, 3]
+];
+var vakjes5 = [
+  [1, 0, 1, 2, 3, 0, 1, 0, 0, 0, 3, 1],
+  [0, 2, 0, 1, 1, 0, 3, 1, 0, 1, 2, 1],
+  [3, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 3],
+  [0, 0, 1, 1, 0, 0, 0, 0, 1, 3, 0, 0],
+  [1, 3, 1, 0, 3, 0, 3, 0, 0, 0, 1, 3],
+  [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0],
+  [3, 0, 1, 0, 1, 0, 0, 3, 1, 1, 0, 0],
+  [2, 1, 0, 3, 0, 0, 1, 0, 0, 2, 1, 0]
 ];
 // een vakje is 80x80 pixels
 // het eerste vakje staat op x=25 en y=30
@@ -92,12 +140,26 @@ var img27;
 var img28;
 var img29;
 var img30;
+var img31;
+var img32;
+var img33;
+var img34;
+var img35;
+var img36;
+var img37;
+var img38;
+var img39;
 
 // tijd in de game
-var tijd = 60;
+var tijd1 = 60; // tijd in level 1
+var tijd2 = 50; // tijd in level 2
+var tijd3 = 45; // tijd in level 3
+var tijd4 = 30; // tijd in level 4
+var tijd5 = 30; // tijd in level 5
 
 // levels
 var level = 1;
+var hoogsteLevel = 1;
 
 
 /* ********************************************* */
@@ -121,6 +183,8 @@ var mainMenu = function() {
   if (mouseX > 565 && mouseX < 715 && mouseY > 400 && mouseY < 550) {
     if (mouseIsPressed === true) {
       spelStatus = SPELEN;
+      level = hoogsteLevel;
+      resetGlobalVariables();
     }
   }
 
@@ -196,103 +260,113 @@ var levelScherm = function() {
   image(img19, 40, 600, 100, 100);
 
   textSize(30);
-  
+
   // level 1
   fill("yellow");
   image(img30, 120, 150, 252, 184);
   image(img14, 216, 212, 80, 80);
   text("Level 1", 200, 360);
+  
+  // ga level 1 spelen als je op play button klikt
+    if (mouseX > 216 && mouseX < 296 && mouseY > 212 && mouseY < 292 && hoogsteLevel >= 1) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = 1;
+        resetGlobalVariables();
+      }
+    }
 
   // level 2
-  if(level >= 2){
-  fill("yellow");
-  image(img30, 492, 150, 252, 184);
-  image(img14, 588, 212, 80, 80);
-  text("Level 2", 572, 360);
+  if (hoogsteLevel >= 2) {
+    fill("yellow");
+    image(img32, 492, 150, 252, 184);
+    image(img14, 588, 212, 80, 80);
+    text("Level 2", 572, 360);
 
-  // ga level 2 spelen als je op play button klikt
-  if (mouseX > 588 && mouseX < 668 && mouseY > 212 && mouseY < 292) {
-    if (mouseIsPressed === true) {
-      spelStatus = SPELEN;
+    // ga level 2 spelen als je op play button klikt
+    if (mouseX > 588 && mouseX < 668 && mouseY > 212 && mouseY < 292) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = 2;
+        resetGlobalVariables();
+      }
     }
   }
-  }
-  else{
-  fill("white");
-  image(img30, 492, 150, 252, 184);
-  image(img28, 503, 150, 230, 200);
-  textSize(30);
-  text("Haal eerst level 1", 502, 360);
+  else {
+    fill("white");
+    image(img33, 492, 150, 252, 184);
+    image(img28, 503, 150, 230, 200);
+    textSize(30);
+    text("Haal eerst level 1", 502, 360);
   }
 
   // level 3
-  if(level >= 3){
-  fill("yellow");
-  image(img30, 864, 150, 252, 184);
-  image(img14, 960, 212, 80, 80);
-  text("Level 3", 944, 360);
+  if (hoogsteLevel >= 3) {
+    fill("yellow");
+    image(img34, 864, 150, 252, 184);
+    image(img14, 960, 212, 80, 80);
+    text("Level 3", 944, 360);
 
-  // ga level 3 spelen als je op play button klikt
-  if (mouseX > 960 && mouseX < 1040 && mouseY > 212 && mouseY < 292) {
-    if (mouseIsPressed === true) {
-      spelStatus = SPELEN;
+    // ga level 3 spelen als je op play button klikt
+    if (mouseX > 960 && mouseX < 1040 && mouseY > 212 && mouseY < 292) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = 3;
+        resetGlobalVariables();
+      }
     }
   }
-  }
-  else{
-  fill("white");
-  image(img30, 864, 150, 252, 184);
-  image(img28, 875, 150, 230, 200);
-  text("Haal eerst level 2", 874, 360);
+  else {
+    fill("white");
+    image(img35, 864, 150, 252, 184);
+    image(img28, 875, 150, 230, 200);
+    text("Haal eerst level 2", 874, 360);
   }
 
   // level 4
-  if(level >= 4){
-  fill("yellow");
-  image(img30, 346, 400, 252, 184);
-  image(img14, 440, 462, 80, 80); // play button
-  text("Level 4", 426, 610);
-    
-  // ga level 5 spelen als je op play button klikt
-  if (mouseX > 426 && mouseX < 506 && mouseY > 462 && mouseY < 542) {
-    if (mouseIsPressed === true) {
-      spelStatus = SPELEN;
+  if (hoogsteLevel >= 4) {
+    fill("yellow");
+    image(img36, 346, 400, 252, 184);
+    image(img14, 440, 462, 80, 80); // play button
+    text("Level 4", 426, 610);
+
+    // ga level 4 spelen als je op play button klikt
+    if (mouseX > 426 && mouseX < 506 && mouseY > 462 && mouseY < 542) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = 4;
+        resetGlobalVariables();
+      }
     }
   }
-  }
-  else{
-  fill("white");
-  image(img30, 346, 400, 252, 184);
-  image(img28, 357, 400, 230, 200);
-  text("Haal eerst level 3", 356, 610);
+  else {
+    fill("white");
+    image(img37, 346, 400, 252, 184);
+    image(img28, 357, 400, 230, 200);
+    text("Haal eerst level 3", 356, 610);
   }
 
   // level 5
-  if(level >= 5){
-  fill("yellow");
-  image(img30, 682, 400, 252, 184);
-  image(img14, 778, 462, 80, 80); // play button
-  text("Level 5", 762, 610);
-    
-  // ga level 5 spelen als je op play button klikt
-  if (mouseX > 778 && mouseX < 858 && mouseY > 462 && mouseY < 542) {
-    if (mouseIsPressed === true) {
-      spelStatus = SPELEN;
-    }
-  }
-  }
-  else{
-  fill("white");
-  image(img30, 682, 400, 252, 184);
-  image(img28, 693, 400, 230, 200);
-  text("Haal eerst level 4", 692, 610);
-  }
+  if (hoogsteLevel >= 5) {
+    fill("yellow");
+    image(img38, 682, 400, 252, 184);
+    image(img14, 778, 462, 80, 80); // play button
+    text("Level 5", 762, 610);
 
-  // ga level 1 spelen als je op play button klikt
-  if (mouseX > 216 && mouseX < 296 && mouseY > 162 && mouseY < 242) {
-    if (mouseIsPressed === true) {
-      spelStatus = SPELEN;
+    // ga level 5 spelen als je op play button klikt
+    if (mouseX > 778 && mouseX < 858 && mouseY > 462 && mouseY < 542) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = 5;
+        resetGlobalVariables();
+      }
     }
+  }
+  else {
+    fill("white");
+    image(img39, 682, 400, 252, 184);
+    image(img28, 693, 400, 230, 200);
+    text("Haal eerst level 4", 692, 610);
   }
 
 
@@ -348,7 +422,7 @@ var quitScherm = function() {
   text("Weet je zeker dat je wil stoppen?", 250, 250);
   text("Level: " + level, 450, 350);
 
-  
+
   image(img22, 320, 400, 100, 100); // Ja button
   image(img15, 600, 400, 100, 100); // Nee button
 
@@ -423,13 +497,22 @@ var beweegAlles = function() {
     spelerY = 590;
   }
 
-
-  // vijand
-
-  // kogel
-
   // tijd
-  tijd = tijd - 0.012375;
+  if(level === 1){
+  tijd1 = tijd1 - 0.012375;
+  } // tijd van level 1 gaat lopen als level 1 aan staat
+  if(level === 2){
+  tijd2 = tijd2 - 0.012375;
+  } // tijd van level 2 gaat lopen als level 2 aan staat
+  if(level === 3){
+  tijd3 = tijd3 - 0.012375;
+  } // tijd van level 3 gaat lopen als level 3 aan staat
+  if(level === 4){
+  tijd4 = tijd4 - 0.012375;
+  } // tijd van level 4 gaat lopen als level 4 aan staat
+  if(level === 5){
+  tijd5 = tijd5 - 0.012375;
+  } // tijd van level 5 gaat lopen als level 5 aan staat
 
 };
 
@@ -442,18 +525,71 @@ var verwerkBotsing = function() {
 
   var i = floor((spelerX + 15) / 80);
   var j = floor((spelerY + 40) / 80);
-  // botsing speler met lava
-  if (vakjes1[j][i] === 1) {
-    health = health - 1;
-    spelerX = 500;
-    spelerY = 355;
-  }
-  // speler op muntje
-  if (vakjes1[j][i] === 2) {
-    muntjes = muntjes + 1;
-    vakjes1[j][i] = 0;
-  }
-
+  if (level === 1) {
+    // botsing speler met lava
+    if (vakjes1[j][i] === 1) {
+      health1en2 = health1en2 - 1;
+      spelerX = 500;
+      spelerY = 355;
+    }
+    // speler op muntje
+    if (vakjes1[j][i] === 2) {
+      muntjes1 = muntjes1 + 1;
+      vakjes1[j][i] = 0;
+    }
+  }; // botsingen voor level 1
+  if (level === 2) {
+    // botsing speler met lava
+    if (vakjes2[j][i] === 1) {
+      health1en2 = health1en2 - 1;
+      spelerX = 500;
+      spelerY = 355;
+    }
+    // speler op muntje
+    if (vakjes2[j][i] === 2) {
+      muntjes2 = muntjes2 + 1;
+      vakjes2[j][i] = 0;
+    }
+  }; // botsingen voor level 2
+  if (level === 3) {
+    // botsing speler met lava
+    if (vakjes3[j][i] === 1) {
+      health3en4 = health3en4 - 1;
+      spelerX = 500;
+      spelerY = 355;
+    }
+    // speler op muntje
+    if (vakjes3[j][i] === 2) {
+      muntjes3 = muntjes3 + 1;
+      vakjes3[j][i] = 0;
+    }
+  }; // botsingen voor level 3
+  if (level === 4) {
+    // botsing speler met lava
+    if (vakjes4[j][i] === 1) {
+      health3en4 = health3en4 - 1;
+      spelerX = 500;
+      spelerY = 355;
+    }
+    // speler op muntje
+    if (vakjes4[j][i] === 2) {
+      muntjes4 = muntjes4 + 1;
+      vakjes4[j][i] = 0;
+    }
+  }; // botsingen voor level 4
+  if (level === 5) {
+    // botsing speler met lava
+    if (vakjes5[j][i] === 1) {
+      health5 = health5 - 1;
+      spelerX = 500;
+      spelerY = 355;
+    }
+    // speler op muntje
+    if (vakjes5[j][i] === 2) {
+      muntjes5 = muntjes5 + 1;
+      vakjes5[j][i] = 0;
+    }
+  }; // botsingen voor level 5
 };
 
 /**
@@ -464,33 +600,147 @@ var tekenAlles = function() {
   // speelveld
   image(img1, 0, 0, 1280, 720);
 
-
-  for (var j = 0; j < vakjes1[0].length; j++) {
-    for (var i = 0; i < vakjes1.length; i++) {
-      // vakje (grijs)
-      if (vakjes1[i][j] === 0) {
-        fill(233, 233, 233);
-        rect(j * 80 + 25, i * 80 + 30, 80, 80);
-        image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-      }
-      // lava
-      if (vakjes1[i][j] === 1) {
-        rect(j * 80 + 25, i * 80 + 30, 80, 80);
-        image(img10, j * 80 + 25, i * 80 + 30, 80, 80);
-      }
-      // muntjes
-      if (vakjes1[i][j] === 2) {
-        image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-        image(img3, j * 80 + 7, i * 80 + 10, 120, 120);
-      }
-      // ander gekleurd vakje
-      if (vakjes1[i][j] === 3) {
-        fill(233, 233, 233);
-        rect(j * 80 + 25, i * 80 + 30, 80, 80);
-        image(img9, j * 80 + 25, i * 80 + 30, 80, 80);
+  if (level === 1) {
+    for (var j = 0; j < vakjes1[0].length; j++) {
+      for (var i = 0; i < vakjes1.length; i++) {
+        // vakje (grijs)
+        if (vakjes1[i][j] === 0) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // lava
+        if (vakjes1[i][j] === 1) {
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img10, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // muntjes
+        if (vakjes1[i][j] === 2) {
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img3, j * 80 + 7, i * 80 + 10, 120, 120);
+        }
+        // ander gekleurd vakje
+        if (vakjes1[i][j] === 3) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img9, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
       }
     }
-  }
+  }  // vakjes tekenen voor level 1
+  if (level === 2) {
+    for (var j = 0; j < vakjes2[0].length; j++) {
+      for (var i = 0; i < vakjes2.length; i++) {
+        // vakje (grijs)
+        if (vakjes2[i][j] === 0) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // lava
+        if (vakjes2[i][j] === 1) {
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img10, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // muntjes
+        if (vakjes2[i][j] === 2) {
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img3, j * 80 + 7, i * 80 + 10, 120, 120);
+        }
+        // ander gekleurd vakje
+        if (vakjes2[i][j] === 3) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img9, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+      }
+    }
+  }  // vakjes tekenen voor level 2
+  if (level === 3) {
+    for (var j = 0; j < vakjes3[0].length; j++) {
+      for (var i = 0; i < vakjes3.length; i++) {
+        // vakje (grijs)
+        if (vakjes3[i][j] === 0) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // lava
+        if (vakjes3[i][j] === 1) {
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img10, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // muntjes
+        if (vakjes3[i][j] === 2) {
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img3, j * 80 + 7, i * 80 + 10, 120, 120);
+        }
+        // ander gekleurd vakje
+        if (vakjes3[i][j] === 3) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img9, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+      }
+    }
+  }  // vakjes tekenen voor level 3
+  if (level === 4) {
+    for (var j = 0; j < vakjes4[0].length; j++) {
+      for (var i = 0; i < vakjes4.length; i++) {
+        // vakje (grijs)
+        if (vakjes4[i][j] === 0) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // lava
+        if (vakjes4[i][j] === 1) {
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img10, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // muntjes
+        if (vakjes4[i][j] === 2) {
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img3, j * 80 + 7, i * 80 + 10, 120, 120);
+        }
+        // ander gekleurd vakje
+        if (vakjes4[i][j] === 3) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img9, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+      }
+    }
+  }  // vakjes tekenen voor level 4
+  if (level === 5) {
+    for (var j = 0; j < vakjes5[0].length; j++) {
+      for (var i = 0; i < vakjes5.length; i++) {
+        // vakje (grijs)
+        if (vakjes5[i][j] === 0) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // lava
+        if (vakjes5[i][j] === 1) {
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img10, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+        // muntjes
+        if (vakjes5[i][j] === 2) {
+          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img3, j * 80 + 7, i * 80 + 10, 120, 120);
+        }
+        // ander gekleurd vakje
+        if (vakjes5[i][j] === 3) {
+          fill(233, 233, 233);
+          rect(j * 80 + 25, i * 80 + 30, 80, 80);
+          image(img9, j * 80 + 25, i * 80 + 30, 80, 80);
+        }
+      }
+    }
+  }  // vakjes tekenen voor level 5
+
   // speler richtingen tijdens het lopen
   var imageToUse = img2;
 
@@ -506,12 +756,12 @@ var tekenAlles = function() {
 
   if (spelerRichting === RIGHT && spelerBeweging === true) {
     imageToUse = img6;
-    spelerGrootteX = 100;
+    spelerGrootteX = 80;
   }
 
   if (spelerRichting === LEFT && spelerBeweging === true) {
     imageToUse = img7;
-    spelerGrootteX = 100;
+    spelerGrootteX = 105;
   }
 
   // scoreboard tijdens het spelen
@@ -520,20 +770,86 @@ var tekenAlles = function() {
   image(img4, 1020, 0, 1200, 720)
   smooth()
 
+  if(level === 1){
   textSize(40);
   fill("yellow");
   text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1050, 90);
   textSize(30);
   text("Level:  " + level, 1070, 160);
-  text("Levens:  " + health + "/3", 1070, 200);
-  text("Muntjes:  " + muntjes + "/5", 1070, 240);
-  text("Tijd:  " + floor(tijd) + "s", 1070, 280);
+  text("Levens:  " + health1en2 + "/3", 1070, 200);
+  text("Muntjes:  " + muntjes1 + "/5", 1070, 240);
+  text("Tijd:  " + floor(tijd1) + "s", 1070, 280);
   textSize(35);
   fill("black");
   image(img11, 1120, 330, 70, 70); // info button
   image(img12, 1120, 430, 70, 70); // retry button 
   image(img15, 1120, 530, 70, 70); // quit button
   rect(1010, 0, 10, 720);
+  } // scoreboard van level 1
+  if(level === 2){
+  textSize(40);
+  fill("yellow");
+  text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1050, 90);
+  textSize(30);
+  text("Level:  " + level, 1070, 160);
+  text("Levens:  " + health1en2 + "/3", 1070, 200);
+  text("Muntjes:  " + muntjes2 + "/5", 1070, 240);
+  text("Tijd:  " + floor(tijd2) + "s", 1070, 280);
+  textSize(35);
+  fill("black");
+  image(img11, 1120, 330, 70, 70); // info button
+  image(img12, 1120, 430, 70, 70); // retry button 
+  image(img15, 1120, 530, 70, 70); // quit button
+  rect(1010, 0, 10, 720);
+  } // scoreboard van level 2
+  if(level === 3){
+  textSize(40);
+  fill("yellow");
+  text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1050, 90);
+  textSize(30);
+  text("Level:  " + level, 1070, 160);
+  text("Levens:  " + health3en4 + "/2", 1070, 200);
+  text("Muntjes:  " + muntjes3 + "/5", 1070, 240);
+  text("Tijd:  " + floor(tijd3) + "s", 1070, 280);
+  textSize(35);
+  fill("black");
+  image(img11, 1120, 330, 70, 70); // info button
+  image(img12, 1120, 430, 70, 70); // retry button 
+  image(img15, 1120, 530, 70, 70); // quit button
+  rect(1010, 0, 10, 720);
+  } // scoreboard van level 3
+  if(level === 4){
+  textSize(40);
+  fill("yellow");
+  text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1050, 90);
+  textSize(30);
+  text("Level:  " + level, 1070, 160);
+  text("Levens:  " + health3en4 + "/2", 1070, 200);
+  text("Muntjes:  " + muntjes4 + "/5", 1070, 240);
+  text("Tijd:  " + floor(tijd4) + "s", 1070, 280);
+  textSize(35);
+  fill("black");
+  image(img11, 1120, 330, 70, 70); // info button
+  image(img12, 1120, 430, 70, 70); // retry button 
+  image(img15, 1120, 530, 70, 70); // quit button
+  rect(1010, 0, 10, 720);
+  } // scoreboard van level 4
+  if(level === 5){
+  textSize(40);
+  fill("yellow");
+  text("𝙎𝙘𝙤𝙧𝙚𝙗𝙤𝙖𝙧𝙙", 1050, 90);
+  textSize(30);
+  text("Level:  " + level, 1070, 160);
+  text("Levens:  " + health5 + "/1", 1070, 200);
+  text("Muntjes:  " + muntjes5 + "/5", 1070, 240);
+  text("Tijd:  " + floor(tijd5) + "s", 1070, 280);
+  textSize(35);
+  fill("black");
+  image(img11, 1120, 330, 70, 70); // info button
+  image(img12, 1120, 430, 70, 70); // retry button 
+  image(img15, 1120, 530, 70, 70); // quit button
+  rect(1010, 0, 10, 720);
+  } // scoreboard van level 5
 
   textSize(25);
 
@@ -581,13 +897,13 @@ var tekenAlles = function() {
  */
 var checkGameOver = function() {
   // check of HP 0 is , of tijd op is of muntjes allemaal gepakt zijn
-  if (health === 0) {
+  if (health1en2 === 0 || health3en4 === 0 || health5 === 0) {
     return true;
   }
-  if (muntjes === 5) {
+  if (muntjes1 === 5 || muntjes2 === 5 || muntjes3 === 5 || muntjes4 === 5 || muntjes5 === 5) {
     return true;
   }
-  if (tijd <= 0) {
+  if (tijd1 <= 0 || tijd2 <= 0 || tijd3 <= 0 || tijd4 <= 0 || tijd5 <= 0) {
     return true;
   }
   return false;
@@ -598,22 +914,100 @@ var checkGameOver = function() {
  * spelen
 */
 function resetGlobalVariables() {
-  muntjes = 0;
-  health = 3;
-  tijd = 60;
-  spelerRichting = RIGHT;
-  spelerBeweging = false;
-  spelerX = 500;
-  spelerY = 355;
-  vakjes1 = [[1, 2, 1, 0, 1, 0, 0, 0, 0, 3, 3, 1],
-  [1, 3, 0, 3, 3, 1, 1, 0, 0, 2, 0, 3],
-  [2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 3, 0],
-  [0, 0, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0],
-  [3, 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 0],
-  [0, 1, 0, 3, 3, 0, 3, 0, 0, 3, 0, 1],
-  [3, 1, 1, 0, 1, 3, 0, 3, 0, 0, 1, 2],
-  [0, 2, 1, 1, 3, 3, 1, 0, 3, 0, 3, 0]
+  if (level === 1) {
+    muntjes1 = 0;
+    health1en2 = 3;
+    tijd1 = 60;
+    spelerRichting = RIGHT;
+    spelerBeweging = false;
+    spelerX = 500;
+    spelerY = 355;
+    vakjes1 = [[1, 2, 1, 0, 1, 0, 0, 0, 0, 3, 3, 1],
+    [1, 3, 0, 3, 3, 1, 1, 0, 0, 2, 0, 3],
+    [2, 1, 1, 0, 0, 0, 0, 0, 0, 1, 3, 0],
+    [0, 0, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0],
+    [3, 1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 0],
+    [0, 1, 0, 3, 3, 0, 3, 0, 0, 3, 0, 1],
+    [3, 1, 1, 0, 1, 3, 0, 3, 0, 0, 1, 2],
+    [0, 2, 1, 1, 3, 3, 1, 0, 3, 0, 3, 0]
+    ];
+  } // reset alles voor level 1
+  if (level === 2) {
+    muntjes2 = 0;
+    health1en2 = 3;
+    tijd2 = 50;
+    spelerRichting = RIGHT;
+    spelerBeweging = false;
+    spelerX = 500;
+    spelerY = 355;
+    vakjes2 = [
+      [3, 1, 1, 1, 0, 0, 0, 1, 1, 0, 3, 0],
+      [0, 3, 0, 3, 2, 3, 0, 0, 0, 0, 1, 3],
+      [1, 3, 0, 0, 1, 0, 3, 0, 0, 1, 2, 0],
+      [2, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+      [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 3, 1, 1, 3, 0, 0, 3, 1, 0, 1],
+      [0, 0, 1, 2, 1, 0, 0, 1, 0, 1, 1, 1],
+      [0, 1, 0, 0, 3, 0, 3, 1, 3, 3, 0, 2]
+              ];
+  } // reset alles voor level 2
+  if (level === 3) {
+    muntjes3 = 0;
+    health3en4 = 2;
+    tijd3 = 45;
+    spelerRichting = RIGHT;
+    spelerBeweging = false;
+    spelerX = 500;
+    spelerY = 355;
+    vakjes3 = [
+  [0, 1, 3, 0, 0, 0, 3, 0, 0, 2, 1, 0],
+  [0, 3, 0, 2, 1, 0, 0, 3, 0, 1, 1, 3],
+  [3, 1, 1, 1, 0, 3, 1, 3, 0, 3, 0, 0],
+  [1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+  [1, 0, 0, 0, 3, 0, 0, 0, 0, 1, 1, 2],
+  [0, 1, 3, 1, 0, 0, 3, 0, 0, 0, 1, 0],
+  [0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0],
+  [3, 0, 1, 3, 0, 2, 1, 0, 0, 3, 0, 3]
+              ];
+  } // reset alles voor level 3
+  if (level === 4) {
+    muntjes4 = 0;
+    health3en4 = 2;
+    tijd4 = 30;
+    spelerRichting = RIGHT;
+    spelerBeweging = false;
+    spelerX = 500;
+    spelerY = 355;
+    vakjes4 = [
+      [2, 1, 0, 0, 1, 0, 0, 3, 0, 0, 0, 3],
+      [3, 1, 0, 3, 1, 2, 1, 1, 0, 3, 1, 0],
+      [0, 3, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1],
+      [1, 1, 0, 1, 0, 3, 0, 0, 0, 1, 2, 0],
+      [0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 1, 0],
+      [3, 2, 1, 0, 1, 0, 3, 0, 0, 1, 3, 0],
+      [0, 1, 1, 0, 3, 0, 0, 1, 0, 3, 0, 0],
+      [3, 0, 0, 3, 1, 1, 2, 1, 1, 0, 1, 3]
+              ];
+  } // reset alles voor level 4
+  if (level === 5) {
+    muntjes5 = 0;
+    health5 = 1;
+    tijd5 = 30;
+    spelerRichting = RIGHT;
+    spelerBeweging = false;
+    spelerX = 500;
+    spelerY = 355;
+    vakjes5 = [
+  [1, 0, 1, 2, 3, 0, 1, 0, 0, 0, 3, 1],
+  [0, 2, 0, 1, 1, 0, 3, 1, 0, 1, 2, 1],
+  [3, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 3],
+  [0, 0, 1, 1, 0, 0, 0, 0, 1, 3, 0, 0],
+  [1, 3, 1, 0, 3, 0, 3, 0, 0, 0, 1, 3],
+  [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0],
+  [3, 0, 1, 0, 1, 0, 0, 3, 1, 1, 0, 0],
+  [2, 1, 0, 3, 0, 0, 1, 0, 0, 2, 1, 0]
   ];
+  } // reset alles voor level 5
 }
 
 
@@ -656,6 +1050,15 @@ function preload() {
   img28 = loadImage('afbeeldingen/levelslock.png');
   img29 = loadImage('afbeeldingen/buttonnummer1.png');
   img30 = loadImage('afbeeldingen/level1normaal.png');
+  img31 = loadImage('afbeeldingen/volgendebutton.png');
+  img32 = loadImage('afbeeldingen/level2normaal.png');
+  img33 = loadImage('afbeeldingen/level2zwartenwit.png');
+  img34 = loadImage('afbeeldingen/level3normaal.png');
+  img35 = loadImage('afbeeldingen/level3zwartenwit.png');
+  img36 = loadImage('afbeeldingen/level4normaal.png');
+  img37 = loadImage('afbeeldingen/level4zwartenwit.png');
+  img38 = loadImage('afbeeldingen/level5normaal.png');
+  img39 = loadImage('afbeeldingen/level5zwartenwit.png');
 }
 
 /**
@@ -712,46 +1115,263 @@ function draw() {
     image(img15, 770, 420, 170, 170);   // terug button
     image(img20, 90, 300);              // plaatje links
     image(img21, 980, 300);             // plaatje rechts
-
-    // score
+    
+    // score level 1
     textSize(60);
-    if (muntjes === 5 && tijd > 0) {
-      fill(255, 255, 255);
-      text("Score:", 520, 400);
-      fill(15, 173, 12);
-      text("A", 715, 400);
-      level = 2;
+      if (muntjes1 === 5 && tijd1 > 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(15, 173, 12);
+        text("A", 715, 400);
+        hoogsteLevel = 2;
+
+        image(img31, 340, 420, 170, 170);   // volgend level button
+        // volgend level button
+    if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = hoogsteLevel;
+        resetGlobalVariables();
+        muntjes1 = 0;
+      }
     }
-    if (muntjes === 4 && tijd > 0) {
-      fill(255, 255, 255);
-      text("Score:", 520, 400);
-      fill(219, 74, 48);
-      text("B", 715, 400);
+      }  // unlock volgende level
+    if (level === 1) {
+      if (muntjes1 === 4) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(219, 74, 48);
+        text("B", 715, 400);
+      }
+      if (muntjes1 === 3) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(230, 130, 30);
+        text("C", 715, 400);
+      }
+      if (muntjes1 === 2) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(69, 105, 68);
+        text("D", 715, 400);
+      }
+      if (muntjes1 === 1) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(2, 34, 97);
+        text("E", 715, 400);
+      }
+      if (muntjes1 === 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(102, 78, 7);
+        text("F", 715, 400);
+      }
+    }  // toon de score aan van level 1
+
+    // score level 2
+    textSize(60);
+      if (muntjes2 === 5 && tijd2 > 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(15, 173, 12);
+        text("A", 715, 400);
+        hoogsteLevel = 3;
+
+        image(img31, 340, 420, 170, 170);   // volgend level button
+        // volgend level button
+    if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = hoogsteLevel;
+        resetGlobalVariables();
+        muntjes1 = 0;
+        muntjes2 = 0;
+      }
     }
-    if (muntjes === 3 && tijd >= 0) {
-      fill(255, 255, 255);
-      text("Score:", 520, 400);
-      fill(230, 130, 30);
-      text("C", 715, 400);
+      } // unlock volgende level
+    if (level === 2) {
+      if (muntjes2 === 4) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(219, 74, 48);
+        text("B", 715, 400);
+      }
+      if (muntjes2 === 3) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(230, 130, 30);
+        text("C", 715, 400);
+      }
+      if (muntjes2 === 2) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(69, 105, 68);
+        text("D", 715, 400);
+      }
+      if (muntjes2 === 1) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(2, 34, 97);
+        text("E", 715, 400);
+      }
+      if (muntjes2 === 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(102, 78, 7);
+        text("F", 715, 400);
+      }
+    } // toon de score aan van level 2
+
+    // score level 3
+    if (muntjes3 === 5 && tijd3 > 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(15, 173, 12);
+        text("A", 715, 400);
+        hoogsteLevel = 4;
+
+        image(img31, 340, 420, 170, 170);   // volgend level button
+        // volgend level button
+    if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = hoogsteLevel;
+        resetGlobalVariables();
+        muntjes1 = 0;
+        muntjes2 = 0;
+        muntjes3 = 0;
+      }
     }
-    if (muntjes === 2 && tijd >= 0) {
-      fill(255, 255, 255);
-      text("Score:", 520, 400);
-      fill(69, 105, 68);
-      text("D", 715, 400);
+      } // unlock volgende level
+    if (level === 3) {
+      if (muntjes3 === 4) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(219, 74, 48);
+        text("B", 715, 400);
+      }
+      if (muntjes3 === 3) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(230, 130, 30);
+        text("C", 715, 400);
+      }
+      if (muntjes3 === 2) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(69, 105, 68);
+        text("D", 715, 400);
+      }
+      if (muntjes3 === 1) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(2, 34, 97);
+        text("E", 715, 400);
+      }
+      if (muntjes3 === 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(102, 78, 7);
+        text("F", 715, 400);
+      }
+    } // toon de score aan van level 3
+
+    // score level 4
+    if (muntjes4 === 5 && tijd4 > 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(15, 173, 12);
+        text("A", 715, 400);
+        hoogsteLevel = 5;
+
+        image(img31, 340, 420, 170, 170);   // volgend level button
+        // volgend level button
+    if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+      if (mouseIsPressed === true) {
+        spelStatus = SPELEN;
+        level = hoogsteLevel;
+        resetGlobalVariables();
+        muntjes1 = 0;
+        muntjes2 = 0;
+        muntjes3 = 0;
+        muntjes4 = 0;
+      }
     }
-    if (muntjes === 1 && tijd >= 0) {
-      fill(255, 255, 255);
-      text("Score:", 520, 400);
-      fill(2, 34, 97);
-      text("E", 715, 400);
-    }
-    if (muntjes === 0 && tijd >= 0) {
-      fill(255, 255, 255);
-      text("Score:", 520, 400);
-      fill(102, 78, 7);
-      text("F", 715, 400);
-    }
+      } // unlock volgende level
+    if (level === 4) {
+      if (muntjes4 === 4) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(219, 74, 48);
+        text("B", 715, 400);
+      }
+      if (muntjes4 === 3) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(230, 130, 30);
+        text("C", 715, 400);
+      }
+      if (muntjes4 === 2) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(69, 105, 68);
+        text("D", 715, 400);
+      }
+      if (muntjes4 === 1) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(2, 34, 97);
+        text("E", 715, 400);
+      }
+      if (muntjes4 === 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(102, 78, 7);
+        text("F", 715, 400);
+      }
+    } // toon de score aan van level 4
+
+    // score level 5
+    if (muntjes5 === 5 && tijd5 > 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(15, 173, 12);
+        text("A", 715, 400);
+        hoogsteLevel = 5;
+      } // unlock volgende level
+    if (level === 5) {
+      if (muntjes5 === 4) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(219, 74, 48);
+        text("B", 715, 400);
+      }
+      if (muntjes5 === 3) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(230, 130, 30);
+        text("C", 715, 400);
+      }
+      if (muntjes5 === 2) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(69, 105, 68);
+        text("D", 715, 400);
+      }
+      if (muntjes5 === 1) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(2, 34, 97);
+        text("E", 715, 400);
+      }
+      if (muntjes5 === 0) {
+        fill(255, 255, 255);
+        text("Score:", 520, 400);
+        fill(102, 78, 7);
+        text("F", 715, 400);
+      }
+    } // toon de score aan van level 5
 
     // retry button
     if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
@@ -768,7 +1388,6 @@ function draw() {
         resetGlobalVariables();
       }
     }
-
 
   }
 };
