@@ -163,6 +163,7 @@ var img44;
 var img45;
 var img46;
 var img47;
+var img48;
 
 // tijd in de game
 var tijd1 = 60; // tijd in level 1
@@ -178,6 +179,7 @@ var hoogsteLevel = 1;
 // punten in de hele game (kan je gebruiken in de shop)
 var punten = 0;
 var muntenupgrade = 0; // gaat 1 omhoog als een upgrade voor munten is gekocht in shop
+var levelsupgrade = 0; // gaat 1 omhoog als een upgrade voor levels is gekocht in shop
 
 
 /* ********************************************* */
@@ -246,22 +248,22 @@ var shopScherm = function() {
 
 
   // munten upgrade
-  image(img27, 80, 200, 390, 350);
+  image(img27, 50, 200, 390, 350); // achtergrond
   textSize(60);
   fill('black');
-  text("ᴍᴜɴᴛᴇɴ", 180, 250)
+  text("ᴍᴜɴᴛᴇɴ", 150, 250)
   textSize(30);
   fill('black');
-  rect(130, 260, 150, 150);
-  image(img8, 140, 270, 130, 130); // achtergrond van het muntje
-  image(img43, 320, 300, 90, 90);  // plus button
+  rect(100, 260, 150, 150);
+  image(img8, 110, 270, 130, 130); // achtergrond van het muntje
+  image(img43, 290, 300, 90, 90);  // plus button
   
   if(muntenupgrade === 0){
-    image(img41, 155, 285, 100, 100); // bronzen coin
+    image(img41, 125, 285, 100, 100); // bronzen coin
     fill('yellow');
-    text("Munten level 1", 120, 450);
-    text("Upgrade kost: 10 punten", 120, 480);
-    if (punten >= 10 && mouseX > 320 && mouseX < 410 && mouseY > 300 && mouseY < 390) {
+    text("Munten level 1", 90, 450);
+    text("Upgrade kost: 10 punten", 90, 480);
+    if (punten >= 10 && mouseX > 290 && mouseX < 380 && mouseY > 300 && mouseY < 390) {
     if (mouseIsPressed === true) {
       muntenupgrade = 1;
       punten = punten - 10;
@@ -269,11 +271,11 @@ var shopScherm = function() {
   }
   }
   if(muntenupgrade === 1){
-    image(img42, 155, 285, 100, 100); // zilveren coin
+    image(img42, 125, 285, 100, 100); // zilveren coin
     fill('yellow');
-    text("Munten level 2", 120, 450);
-    text("Upgrade kost: 50 punten", 120, 480);
-    if (punten >= 50 && mouseX > 340 && mouseX < 430 && mouseY > 300 && mouseY < 390) {
+    text("Munten level 2", 90, 450);
+    text("Upgrade kost: 50 punten", 90, 480);
+    if (punten >= 50 && mouseX > 290 && mouseX < 380 && mouseY > 300 && mouseY < 390) {
     if (mouseIsPressed === true) {
       muntenupgrade = 2;
       punten = punten - 50;
@@ -281,12 +283,23 @@ var shopScherm = function() {
   }
   }
   if(muntenupgrade === 2){
-    image(img3, 155, 285, 100, 100); // gouden coin
+    image(img3, 125, 285, 100, 100); // gouden coin
     fill('yellow');
-    text("Munten level 3", 120, 450);
-    text("Upgrade kost: MAX LEVEL", 120, 480);
+    text("Munten level 3", 90, 450);
+    text("Upgrade kost: MAX LEVEL", 90, 480);
   }
-  
+
+
+  // levels upgrade
+  image(img27, 500, 200, 390, 350); // achtergrond
+  textSize(60);
+  fill('black');
+  text("ʟᴇᴠᴇʟꜱ", 600, 250)
+  textSize(30);
+  fill('black');
+  rect(550, 260, 150, 150);
+  image(img8, 560, 270, 130, 130); // achtergrond van het muntje
+  image(img43, 740, 300, 90, 90);  // plus button
 
     // button om terug te gaan naar de main menu
   image(img19, 40, 600, 100, 100);
@@ -302,31 +315,54 @@ var shopScherm = function() {
  * Uitlegscherm in de main menu van de game wordt hier gemaakt
 */
 var uitlegScherm = function() {
-  // achtergrond
-  image(img16, 0, 0, 1280, 720);
-  fill(0,0,0)
-  rect(635,0,10,720)
-  rect(0,355,1280,10)
+  //achtergrond
+  image(img8, 645, 365, 635, 355);
+  image(img8, 0, 0, 635, 355);
+  image(img9, 645, 0, 635, 355);
+  image(img9, 0, 365, 635, 355);
+  fill('black');
+  rect(635, 0, 10, 720);  // lijnen die 4 vakken maken
+  rect(0, 355, 1280, 10);
   // text bovenin
+  rect(500, 0, 300, 100); // zwart hokje om text INFO
   textSize(100);
   fill("yellow");
-  text("𝐼𝒩𝐹𝒪", 520, 80)
-  image(img44,100,150,150,100)
+  text("𝐼𝒩𝐹𝒪", 520, 80);
+
+  // vakje linksboven
+  image(img2, 100, 20, 155, 200);  // idlecharacter
+  image(img44, 100, 240, 150, 100) // WASD image
+  textSize(25);
+  text("Gebruik WASD om te bewegen", 250, 200);
+
+  // vakje linksonder
+  image(img3,290, 500, 150, 100)  // gouden muntje
+  image(img41,60, 500, 150, 100)  // bronzen muntje
+  image(img42,175, 500, 150, 100) // zilveren muntje
+  image(img5, 450, 450, 155, 200);  // idlecharacter
   textSize(20);
-  text("gebruik wasd om te bewegen",300,200)
-  image(img3,275,400,150,100)
-  image(img41,75,400,150,100)
-  image(img42,175,400,150,100)
-  text("pak de muntjes om punten te krijgen en het level te voltooien",75,525)
-  image(img10,700,150,100,100)
-  text("vermijd de lava", 850,200)
-  image(img40,700,450,100,100)
-  image(img45,750,500,50,50) 
-  image(img46,850,450,200,100)
-  image(img47,1075,400,200,200)
-  text("gebruik je punten in de shop",700,600)
-  // button om terug te gaan naar de main menu
-  image(img19, 40, 600, 100, 100);
+  text("Pak de muntjes om punten te krijgen en het level te voltooien",65,425);
+  text("1", 127, 520); // aantal punten per bronze muntje
+  text("2", 242, 520); // aantal punten per zilvere muntje
+  text("4", 357, 520); // aantal punten per goude muntje
+
+  // vakje rechtsboven
+  image(img10, 1100, 140, 120, 120); // lava image
+  image(img2, 700, 120, 105, 150);   // idlecharacter
+  image(img46, 840, 150, 200, 100);  // pijltje naar rechts
+  image(img48, 880, 140, 120, 120);  // kruisje door het pijltje
+  textSize(40);
+  text("Vermijd de lava", 850,330);
+
+  // vakje rechtsonder
+  image(img40, 680, 450, 100, 100);  // shop button
+  image(img45, 730, 500, 40, 50);    // mouse cursor
+  image(img46, 830, 450, 200, 100);  // pijltje naar rechts
+  image(img47, 1055, 400, 200, 200); // shop voorbeeld
+  textSize(30);
+  text("Gebruik je punten in de shop", 700, 650);
+  // button om terug te gaan naar het spel
+  image(img19, 50, 600, 100, 100);
 
   if (mouseX > 40 && mouseX < 140 && mouseY > 600 && mouseY < 700) {
     if (mouseIsPressed === true) {
@@ -343,30 +379,52 @@ var uitlegScherm = function() {
 
 // Uitlegscherm tijdens het spelen van de game wordt hier gemaakt
 var uitlegScherm2 = function() {
-  
   //achtergrond
-  image(img16, 0, 0, 1280, 720);
-  fill(0,0,0)
-  rect(635,0,10,720)
-  rect(0,355,1280,10)
+  image(img8, 645, 365, 635, 355);
+  image(img8, 0, 0, 635, 355);
+  image(img9, 645, 0, 635, 355);
+  image(img9, 0, 365, 635, 355);
+  fill('black');
+  rect(635, 0, 10, 720);  // lijnen die 4 vakken maken
+  rect(0, 355, 1280, 10);
   // text bovenin
+  rect(500, 0, 300, 100); // zwart hokje om text INFO
   textSize(100);
   fill("yellow");
-  text("𝐼𝒩𝐹𝒪", 520, 80)
-  image(img44,100,150,150,100)
+  text("𝐼𝒩𝐹𝒪", 520, 80);
+
+  // vakje linksboven
+  image(img2, 100, 20, 155, 200);  // idlecharacter
+  image(img44, 100, 240, 150, 100) // WASD image
+  textSize(25);
+  text("Gebruik WASD om te bewegen", 250, 200);
+
+  // vakje linksonder
+  image(img3,290, 500, 150, 100)  // gouden muntje
+  image(img41,60, 500, 150, 100)  // bronzen muntje
+  image(img42,175, 500, 150, 100) // zilveren muntje
+  image(img5, 450, 450, 155, 200);  // idlecharacter
   textSize(20);
-  text("gebruik wasd om te bewegen",300,200)
-  image(img3,275,400,150,100)
-  image(img41,75,400,150,100)
-  image(img42,175,400,150,100)
-  text("pak de muntjes om punten te krijgen en het level te voltooien",75,525)
-  image(img10,700,150,100,100)
-  text("vermijd de lava", 850,200)
-  image(img40,700,450,100,100)
-  image(img45,750,500,50,50) 
-  image(img46,850,450,200,100)
-  image(img47,1075,400,200,200)
-  text("gebruik je punten in de shop",700,600)
+  text("Pak de muntjes om punten te krijgen en het level te voltooien",65,425);
+  text("1", 127, 520); // aantal punten per bronze muntje
+  text("2", 242, 520); // aantal punten per zilvere muntje
+  text("4", 357, 520); // aantal punten per goude muntje
+
+  // vakje rechtsboven
+  image(img10, 1100, 140, 120, 120); // lava image
+  image(img2, 700, 120, 105, 150);   // idlecharacter
+  image(img46, 840, 150, 200, 100);  // pijltje naar rechts
+  image(img48, 880, 140, 120, 120);  // kruisje door het pijltje
+  textSize(40);
+  text("Vermijd de lava", 850,330);
+
+  // vakje rechtsonder
+  image(img40, 680, 450, 100, 100);  // shop button
+  image(img45, 730, 500, 40, 50);    // mouse cursor
+  image(img46, 830, 450, 200, 100);  // pijltje naar rechts
+  image(img47, 1055, 400, 200, 200); // shop voorbeeld
+  textSize(30);
+  text("Gebruik je punten in de shop", 700, 650);
   // button om terug te gaan naar het spel
   image(img19, 50, 600, 100, 100);
 
@@ -702,7 +760,7 @@ var verwerkBotsing = function() {
       punten = punten + 2;
       }
       if(muntenupgrade === 2){
-      punten = punten + 3;
+      punten = punten + 4;
       }
     }
   }; // botsingen voor level 1
@@ -724,7 +782,7 @@ var verwerkBotsing = function() {
       punten = punten + 2;
       }
       if(muntenupgrade === 2){
-      punten = punten + 3;
+      punten = punten + 4;
       }
     }
   }; // botsingen voor level 2
@@ -746,7 +804,7 @@ var verwerkBotsing = function() {
       punten = punten + 2;
       }
       if(muntenupgrade === 2){
-      punten = punten + 3;
+      punten = punten + 4;
       }
     }
   }; // botsingen voor level 3
@@ -768,7 +826,7 @@ var verwerkBotsing = function() {
       punten = punten + 2;
       }
       if(muntenupgrade === 2){
-      punten = punten + 3;
+      punten = punten + 4;
       }
     }
   }; // botsingen voor level 4
@@ -790,7 +848,7 @@ var verwerkBotsing = function() {
       punten = punten + 2;
       }
       if(muntenupgrade === 2){
-      punten = punten + 3;
+      punten = punten + 4;
       }
     }
   }; // botsingen voor level 5
@@ -1326,6 +1384,7 @@ function preload() {
   img45 = loadImage('afbeeldingen/mousecursor.png');
   img46 = loadImage('afbeeldingen/arrowright.png');
   img47 = loadImage('afbeeldingen/shopvoorbeeld.png');
+  img48 = loadImage('afbeeldingen/kruis.png');
 }
 
 /**

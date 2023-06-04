@@ -25,6 +25,7 @@ Wat we nog willen toevoegen:
 2. Punten in de hele game (klaar)
 3. Punten shop (klaar)
 4. Levels kopen in shop
-5. Easter eggs
-6. Speciale muntjes
-7. Misschien geluiden
+5. Vermenigvuldigaar in shop voor punten
+6. Easter eggs
+7. Speciale muntjes
+8. Misschien geluiden
