@@ -21,7 +21,10 @@ https://emmauscollege.github.io/informatica/game/
 
 
 Wat we nog willen toevoegen:
-1. Tijd records
-2. Easter eggs
-3. Speciale muntjes
-4. Misschien geluiden
+1. Tijd records (klaar)
+2. Punten in de hele game (klaar)
+3. Punten shop (klaar)
+4. Levels kopen in shop
+5. Easter eggs
+6. Speciale muntjes
+7. Misschien geluiden
