@@ -159,6 +159,10 @@ var img40;
 var img41;
 var img42;
 var img43;
+var img44;
+var img45;
+var img46;
+var img47;
 
 // tijd in de game
 var tijd1 = 60; // tijd in level 1
@@ -300,11 +304,27 @@ var shopScherm = function() {
 var uitlegScherm = function() {
   // achtergrond
   image(img16, 0, 0, 1280, 720);
+  fill(0,0,0)
+  rect(635,0,10,720)
+  rect(0,355,1280,10)
   // text bovenin
   textSize(100);
   fill("yellow");
   text("𝐼𝒩𝐹𝒪", 520, 80)
-
+  image(img44,100,150,150,100)
+  textSize(20);
+  text("gebruik wasd om te bewegen",300,200)
+  image(img3,275,400,150,100)
+  image(img41,75,400,150,100)
+  image(img42,175,400,150,100)
+  text("pak de muntjes om punten te krijgen en het level te voltooien",75,525)
+  image(img10,700,150,100,100)
+  text("vermijd de lava", 850,200)
+  image(img40,700,450,100,100)
+  image(img45,750,500,50,50) 
+  image(img46,850,450,200,100)
+  image(img47,1075,400,200,200)
+  text("gebruik je punten in de shop",700,600)
   // button om terug te gaan naar de main menu
   image(img19, 40, 600, 100, 100);
 
@@ -323,15 +343,33 @@ var uitlegScherm = function() {
 
 // Uitlegscherm tijdens het spelen van de game wordt hier gemaakt
 var uitlegScherm2 = function() {
+  
   //achtergrond
   image(img16, 0, 0, 1280, 720);
+  fill(0,0,0)
+  rect(635,0,10,720)
+  rect(0,355,1280,10)
   // text bovenin
   textSize(100);
   fill("yellow");
   text("𝐼𝒩𝐹𝒪", 520, 80)
-
+  image(img44,100,150,150,100)
+  textSize(20);
+  text("gebruik wasd om te bewegen",300,200)
+  image(img3,275,400,150,100)
+  image(img41,75,400,150,100)
+  image(img42,175,400,150,100)
+  text("pak de muntjes om punten te krijgen en het level te voltooien",75,525)
+  image(img10,700,150,100,100)
+  text("vermijd de lava", 850,200)
+  image(img40,700,450,100,100)
+  image(img45,750,500,50,50) 
+  image(img46,850,450,200,100)
+  image(img47,1075,400,200,200)
+  text("gebruik je punten in de shop",700,600)
   // button om terug te gaan naar het spel
   image(img19, 50, 600, 100, 100);
+
 
   if (mouseX > 50 && mouseX < 150 && mouseY > 600 && mouseY < 700) {
     if (mouseIsPressed === true) {
@@ -1284,6 +1322,10 @@ function preload() {
   img41 = loadImage('afbeeldingen/bronzencoin.gif');
   img42 = loadImage('afbeeldingen/zilverencoin.gif');
   img43 = loadImage('afbeeldingen/plusbutton.png');
+  img44 = loadImage('afbeeldingen/WASD.png');
+  img45 = loadImage('afbeeldingen/mousecursor.png');
+  img46 = loadImage('afbeeldingen/arrowright.png');
+  img47 = loadImage('afbeeldingen/shopvoorbeeld.png');
 }
 
 /**
@@ -1351,8 +1393,10 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
+      if(level >= hoogsteLevel){
       hoogsteLevel = 2;
-
+      }
+        
       // record tijd van level 1
       if (tijd1 > 0 && recordtijd1afgerond <= recordtijd1onafgerond) {
         recordtijd1onafgerond = 60 - tijd1;
@@ -1409,7 +1453,9 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
+      if(level >= hoogsteLevel){
       hoogsteLevel = 3;
+      }
       
       // record tijd van level 2
       if (tijd2 > 0 && recordtijd2afgerond <= recordtijd2onafgerond) {
@@ -1467,7 +1513,9 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
+      if(level >= hoogsteLevel){
       hoogsteLevel = 4;
+      }
       
       // record tijd van level 3
       if (tijd3 > 0 && recordtijd3afgerond <= recordtijd3onafgerond) {
@@ -1526,7 +1574,9 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
+      if(level >= hoogsteLevel){
       hoogsteLevel = 5;
+      }
       
       // record tijd van level 4
       if (tijd4 > 0 && recordtijd4afgerond <= recordtijd4onafgerond) {
@@ -1625,6 +1675,7 @@ function draw() {
         text("F", 715, 400);
       }
     } // toon de score aan van level 5
+
 
     // retry button
     if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
