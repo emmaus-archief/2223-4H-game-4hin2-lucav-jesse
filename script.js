@@ -178,8 +178,10 @@ var hoogsteLevel = 1;
 
 // punten in de hele game (kan je gebruiken in de shop)
 var punten = 0;
-var muntenupgrade = 0; // gaat 1 omhoog als een upgrade voor munten is gekocht in shop
-var levelsupgrade = 0; // gaat 1 omhoog als een upgrade voor levels is gekocht in shop
+var muntenupgrade = 0;     // gaat 1 omhoog als een upgrade voor munten is gekocht in shop
+var levelsupgrade = 0;     // gaat 1 omhoog als een upgrade voor levels is gekocht in shop
+var vermenigvuldiging = 0; // gaat 1 omhoog als een upgrade voor vermenigvuldiging is gekocht in 
+                           //  shop
 
 
 /* ********************************************* */
@@ -248,67 +250,79 @@ var shopScherm = function() {
 
 
   // munten upgrade
-  image(img27, 50, 200, 390, 350); // achtergrond
+  image(img27, 20, 200, 390, 350); // achtergrond
   textSize(60);
   fill('black');
-  text("ᴍᴜɴᴛᴇɴ", 150, 250)
+  text("ᴍᴜɴᴛᴇɴ", 120, 250)
   textSize(30);
   fill('black');
-  rect(100, 260, 150, 150);
-  image(img8, 110, 270, 130, 130); // achtergrond van het muntje
-  image(img43, 290, 300, 90, 90);  // plus button
-  
-  if(muntenupgrade === 0){
-    image(img41, 125, 285, 100, 100); // bronzen coin
+  rect(70, 260, 150, 150);
+  image(img8, 80, 270, 130, 130); // achtergrond van het muntje
+  image(img43, 260, 300, 90, 90);  // plus button
+
+  if (muntenupgrade === 0) {
+    image(img41, 95, 285, 100, 100); // bronzen coin
     fill('yellow');
-    text("Munten level 1", 90, 450);
-    text("Upgrade kost: 10 punten", 90, 480);
-    if (punten >= 10 && mouseX > 290 && mouseX < 380 && mouseY > 300 && mouseY < 390) {
-    if (mouseIsPressed === true) {
-      muntenupgrade = 1;
-      punten = punten - 10;
+    text("Munten level 1", 60, 450);
+    text("Upgrade kost: 10 punten", 60, 480);
+    if (punten >= 10 && mouseX > 260 && mouseX < 350 && mouseY > 300 && mouseY < 390) {
+      if (mouseIsPressed === true) {
+        muntenupgrade = 1;
+        punten = punten - 10;
+      }
     }
   }
-  }
-  if(muntenupgrade === 1){
-    image(img42, 125, 285, 100, 100); // zilveren coin
+  if (muntenupgrade === 1) {
+    image(img42, 95, 285, 100, 100); // zilveren coin
     fill('yellow');
-    text("Munten level 2", 90, 450);
-    text("Upgrade kost: 50 punten", 90, 480);
-    if (punten >= 50 && mouseX > 290 && mouseX < 380 && mouseY > 300 && mouseY < 390) {
-    if (mouseIsPressed === true) {
-      muntenupgrade = 2;
-      punten = punten - 50;
+    text("Munten level 2", 60, 450);
+    text("Upgrade kost: 50 punten", 60, 480);
+    if (punten >= 50 && mouseX > 260 && mouseX < 350 && mouseY > 300 && mouseY < 390) {
+      if (mouseIsPressed === true) {
+        muntenupgrade = 2;
+        punten = punten - 50;
+      }
     }
   }
-  }
-  if(muntenupgrade === 2){
-    image(img3, 125, 285, 100, 100); // gouden coin
+  if (muntenupgrade === 2) {
+    image(img3, 95, 285, 100, 100); // gouden coin
     fill('yellow');
-    text("Munten level 3", 90, 450);
-    text("Upgrade kost: MAX LEVEL", 90, 480);
+    text("Munten level 3", 60, 450);
+    text("Upgrade kost: MAX LEVEL", 60, 480);
   }
 
 
   // levels upgrade
-  image(img27, 500, 200, 390, 350); // achtergrond
+  image(img27, 450, 200, 390, 350); // achtergrond
   textSize(60);
   fill('black');
-  text("ʟᴇᴠᴇʟꜱ", 600, 250)
+  text("ʟᴇᴠᴇʟꜱ", 550, 250)
   textSize(30);
   fill('black');
-  rect(550, 260, 150, 150);
-  image(img8, 560, 270, 130, 130); // achtergrond van het muntje
-  image(img43, 740, 300, 90, 90);  // plus button
+  rect(500, 260, 150, 150);
+  image(img8, 510, 270, 130, 130); // achtergrond klein vakje
+  image(img43, 690, 300, 90, 90);  // plus button
 
-    // button om terug te gaan naar de main menu
+
+  // multiplier upgrade
+  image(img27, 880, 200, 390, 350); // achtergrond
+  textSize(60);
+  fill('black');
+  text("ᴍᴜʟᴛɪᴘʟɪᴇʀ", 940, 250)
+  textSize(30);
+  fill('black');
+  rect(930, 260, 150, 150);
+  image(img8, 940, 270, 130, 130); // achtergrond klein vakje
+  image(img43, 1120, 300, 90, 90);  // plus button
+
+  // button om terug te gaan naar de main menu
   image(img19, 40, 600, 100, 100);
 
   if (mouseX > 40 && mouseX < 140 && mouseY > 600 && mouseY < 700) {
     if (mouseIsPressed === true) {
       spelStatus = MAINMENU;
     }
-  }  
+  }
 }
 
 /** 
@@ -336,15 +350,27 @@ var uitlegScherm = function() {
   text("Gebruik WASD om te bewegen", 250, 200);
 
   // vakje linksonder
-  image(img3,290, 500, 150, 100)  // gouden muntje
-  image(img41,60, 500, 150, 100)  // bronzen muntje
-  image(img42,175, 500, 150, 100) // zilveren muntje
+  image(img3, 290, 500, 150, 100)  // gouden muntje
+  image(img41, 60, 500, 150, 100)  // bronzen muntje
+  image(img42, 175, 500, 150, 100) // zilveren muntje
   image(img5, 450, 450, 155, 200);  // idlecharacter
   textSize(20);
-  text("Pak de muntjes om punten te krijgen en het level te voltooien",65,425);
-  text("1", 127, 520); // aantal punten per bronze muntje
-  text("2", 242, 520); // aantal punten per zilvere muntje
-  text("4", 357, 520); // aantal punten per goude muntje
+  text("Pak de muntjes om punten te krijgen en het level te voltooien", 65, 425);
+  if (vermenigvuldiging === 0) {
+    text("1", 127, 520); // aantal punten per bronze muntje
+    text("2", 242, 520); // aantal punten per zilvere muntje
+    text("4", 357, 520); // aantal punten per goude muntje
+  }
+  if (vermenigvuldiging === 1) {
+    text("1.5", 127, 520); // aantal punten per bronze muntje
+    text("3", 242, 520); // aantal punten per zilvere muntje
+    text("6", 357, 520); // aantal punten per goude muntje
+  }
+  if (vermenigvuldiging === 2) {
+    text("2", 127, 520); // aantal punten per bronze muntje
+    text("4", 242, 520); // aantal punten per zilvere muntje
+    text("8", 357, 520); // aantal punten per goude muntje
+  }
 
   // vakje rechtsboven
   image(img10, 1100, 140, 120, 120); // lava image
@@ -352,7 +378,7 @@ var uitlegScherm = function() {
   image(img46, 840, 150, 200, 100);  // pijltje naar rechts
   image(img48, 880, 140, 120, 120);  // kruisje door het pijltje
   textSize(40);
-  text("Vermijd de lava", 850,330);
+  text("Vermijd de lava", 850, 330);
 
   // vakje rechtsonder
   image(img40, 680, 450, 100, 100);  // shop button
@@ -400,15 +426,27 @@ var uitlegScherm2 = function() {
   text("Gebruik WASD om te bewegen", 250, 200);
 
   // vakje linksonder
-  image(img3,290, 500, 150, 100)  // gouden muntje
-  image(img41,60, 500, 150, 100)  // bronzen muntje
-  image(img42,175, 500, 150, 100) // zilveren muntje
+  image(img3, 290, 500, 150, 100)  // gouden muntje
+  image(img41, 60, 500, 150, 100)  // bronzen muntje
+  image(img42, 175, 500, 150, 100) // zilveren muntje
   image(img5, 450, 450, 155, 200);  // idlecharacter
   textSize(20);
-  text("Pak de muntjes om punten te krijgen en het level te voltooien",65,425);
-  text("1", 127, 520); // aantal punten per bronze muntje
-  text("2", 242, 520); // aantal punten per zilvere muntje
-  text("4", 357, 520); // aantal punten per goude muntje
+  text("Pak de muntjes om punten te krijgen en het level te voltooien", 65, 425);
+  if (vermenigvuldiging === 0) {
+    text("1", 127, 520); // aantal punten per bronze muntje
+    text("2", 242, 520); // aantal punten per zilvere muntje
+    text("4", 357, 520); // aantal punten per goude muntje
+  }
+  if (vermenigvuldiging === 1) {
+    text("1.5", 127, 520); // aantal punten per bronze muntje
+    text("3", 242, 520); // aantal punten per zilvere muntje
+    text("6", 357, 520); // aantal punten per goude muntje
+  }
+  if (vermenigvuldiging === 2) {
+    text("2", 127, 520); // aantal punten per bronze muntje
+    text("4", 242, 520); // aantal punten per zilvere muntje
+    text("8", 357, 520); // aantal punten per goude muntje
+  }
 
   // vakje rechtsboven
   image(img10, 1100, 140, 120, 120); // lava image
@@ -416,7 +454,7 @@ var uitlegScherm2 = function() {
   image(img46, 840, 150, 200, 100);  // pijltje naar rechts
   image(img48, 880, 140, 120, 120);  // kruisje door het pijltje
   textSize(40);
-  text("Vermijd de lava", 850,330);
+  text("Vermijd de lava", 850, 330);
 
   // vakje rechtsonder
   image(img40, 680, 450, 100, 100);  // shop button
@@ -458,12 +496,12 @@ var levelScherm = function() {
   image(img30, 120, 150, 252, 184);
   image(img14, 216, 212, 80, 80);
   text("Level 1", 200, 360);
-  
+
   textSize(20);
   recordtijd1afgerond = recordtijd1onafgerond.toFixed(3); // afgeronde tijd met 3 decimalen
   text("Snelste tijd: " + recordtijd1afgerond + "s", 160, 180);
   textSize(30);
-  
+
   // ga level 1 spelen als je op play button klikt
   if (mouseX > 216 && mouseX < 296 && mouseY > 212 && mouseY < 292 && hoogsteLevel >= 1) {
     if (mouseIsPressed === true) {
@@ -479,7 +517,7 @@ var levelScherm = function() {
     image(img32, 492, 150, 252, 184);
     image(img14, 588, 212, 80, 80);
     text("Level 2", 572, 360);
-    
+
     textSize(20);
     recordtijd2afgerond = recordtijd2onafgerond.toFixed(3); // afgeronde tijd met 3 decimalen
     text("Snelste tijd: " + recordtijd2afgerond + "s", 532, 180);
@@ -508,7 +546,7 @@ var levelScherm = function() {
     image(img34, 864, 150, 252, 184);
     image(img14, 960, 212, 80, 80);
     text("Level 3", 944, 360);
-    
+
     textSize(20);
     recordtijd3afgerond = recordtijd3onafgerond.toFixed(3); // afgeronde tijd met 3 decimalen
     text("Snelste tijd: " + recordtijd3afgerond + "s", 904, 180);
@@ -564,7 +602,7 @@ var levelScherm = function() {
     image(img38, 682, 400, 252, 184);
     image(img14, 778, 462, 80, 80); // play button
     text("Level 5", 762, 610);
-    
+
     textSize(20);
     recordtijd5afgerond = recordtijd5onafgerond.toFixed(3); // afgeronde tijd met 3 decimalen
     text("Snelste tijd: " + recordtijd5afgerond + "s", 722, 430);
@@ -753,14 +791,36 @@ var verwerkBotsing = function() {
     if (vakjes1[j][i] === 2) {
       muntjes1 = muntjes1 + 1;
       vakjes1[j][i] = 0;
-      if(muntenupgrade === 0){
-      punten = punten + 1;
+      if (muntenupgrade === 0) {
+        if (vermenigvuldiging === 0 || vermenigvuldiging === 1) {
+          punten = punten + 1;
+        }
+        if (vermenigvuldiging === 2) {
+          punten = punten + 2;
+        }
       }
-      if(muntenupgrade === 1){
-      punten = punten + 2;
+
+      if (muntenupgrade === 1) {
+        if (vermenigvuldiging === 0) {
+          punten = punten + 2;
+        }
+        if (vermenigvuldiging === 1) {
+          punten = punten + 3;
+        }
+        if (vermenigvuldiging === 2) {
+          punten = punten + 4;
+        }
       }
-      if(muntenupgrade === 2){
-      punten = punten + 4;
+      if (muntenupgrade === 2) {
+        if (vermenigvuldiging === 0) {
+          punten = punten + 4;
+        }
+        if (vermenigvuldiging === 1) {
+          punten = punten + 6;
+        }
+        if (vermenigvuldiging === 2) {
+          punten = punten + 8;
+        }
       }
     }
   }; // botsingen voor level 1
@@ -775,14 +835,14 @@ var verwerkBotsing = function() {
     if (vakjes2[j][i] === 2) {
       muntjes2 = muntjes2 + 1;
       vakjes2[j][i] = 0;
-      if(muntenupgrade === 0){
-      punten = punten + 1;
+      if (muntenupgrade === 0) {
+        punten = punten + 1;
       }
-      if(muntenupgrade === 1){
-      punten = punten + 2;
+      if (muntenupgrade === 1) {
+        punten = punten + 2;
       }
-      if(muntenupgrade === 2){
-      punten = punten + 4;
+      if (muntenupgrade === 2) {
+        punten = punten + 4;
       }
     }
   }; // botsingen voor level 2
@@ -797,14 +857,14 @@ var verwerkBotsing = function() {
     if (vakjes3[j][i] === 2) {
       muntjes3 = muntjes3 + 1;
       vakjes3[j][i] = 0;
-      if(muntenupgrade === 0){
-      punten = punten + 1;
+      if (muntenupgrade === 0) {
+        punten = punten + 1;
       }
-      if(muntenupgrade === 1){
-      punten = punten + 2;
+      if (muntenupgrade === 1) {
+        punten = punten + 2;
       }
-      if(muntenupgrade === 2){
-      punten = punten + 4;
+      if (muntenupgrade === 2) {
+        punten = punten + 4;
       }
     }
   }; // botsingen voor level 3
@@ -819,14 +879,14 @@ var verwerkBotsing = function() {
     if (vakjes4[j][i] === 2) {
       muntjes4 = muntjes4 + 1;
       vakjes4[j][i] = 0;
-      if(muntenupgrade === 0){
-      punten = punten + 1;
+      if (muntenupgrade === 0) {
+        punten = punten + 1;
       }
-      if(muntenupgrade === 1){
-      punten = punten + 2;
+      if (muntenupgrade === 1) {
+        punten = punten + 2;
       }
-      if(muntenupgrade === 2){
-      punten = punten + 4;
+      if (muntenupgrade === 2) {
+        punten = punten + 4;
       }
     }
   }; // botsingen voor level 4
@@ -841,14 +901,14 @@ var verwerkBotsing = function() {
     if (vakjes5[j][i] === 2) {
       muntjes5 = muntjes5 + 1;
       vakjes5[j][i] = 0;
-      if(muntenupgrade === 0){
-      punten = punten + 1;
+      if (muntenupgrade === 0) {
+        punten = punten + 1;
       }
-      if(muntenupgrade === 1){
-      punten = punten + 2;
+      if (muntenupgrade === 1) {
+        punten = punten + 2;
       }
-      if(muntenupgrade === 2){
-      punten = punten + 4;
+      if (muntenupgrade === 2) {
+        punten = punten + 4;
       }
     }
   }; // botsingen voor level 5
@@ -877,18 +937,18 @@ var tekenAlles = function() {
           image(img10, j * 80 + 25, i * 80 + 30, 80, 80);
         }
         // muntjes
-          if (vakjes1[i][j] === 2) {
-          if(muntenupgrade === 0){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
-        }
-            if(muntenupgrade === 1){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
+        if (vakjes1[i][j] === 2) {
+          if (muntenupgrade === 0) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
           }
-            if(muntenupgrade === 2){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
+          if (muntenupgrade === 1) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
+          }
+          if (muntenupgrade === 2) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
           }
         }
         // ander gekleurd vakje
@@ -916,17 +976,17 @@ var tekenAlles = function() {
         }
         // muntjes
         if (vakjes2[i][j] === 2) {
-          if(muntenupgrade === 0){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
+          if (muntenupgrade === 0) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
           }
-          if(muntenupgrade === 1){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
+          if (muntenupgrade === 1) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
           }
-          if(muntenupgrade === 2){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
+          if (muntenupgrade === 2) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
           }
         }
         // ander gekleurd vakje
@@ -954,17 +1014,17 @@ var tekenAlles = function() {
         }
         // muntjes
         if (vakjes3[i][j] === 2) {
-          if(muntenupgrade === 0){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
+          if (muntenupgrade === 0) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
           }
-          if(muntenupgrade === 1){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
+          if (muntenupgrade === 1) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
           }
-          if(muntenupgrade === 2){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
+          if (muntenupgrade === 2) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
           }
         }
         // ander gekleurd vakje
@@ -992,17 +1052,17 @@ var tekenAlles = function() {
         }
         // muntjes
         if (vakjes4[i][j] === 2) {
-          if(muntenupgrade === 0){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
+          if (muntenupgrade === 0) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
           }
-          if(muntenupgrade === 1){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
+          if (muntenupgrade === 1) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
           }
-          if(muntenupgrade === 2){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
+          if (muntenupgrade === 2) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
           }
         }
         // ander gekleurd vakje
@@ -1030,17 +1090,17 @@ var tekenAlles = function() {
         }
         // muntjes
         if (vakjes5[i][j] === 2) {
-          if(muntenupgrade === 0){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
+          if (muntenupgrade === 0) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img41, j * 80 + 25, i * 80 + 25, 80, 80); // bronzen coin
           }
-          if(muntenupgrade === 1){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
+          if (muntenupgrade === 1) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img42, j * 80 + 25, i * 80 + 25, 80, 80); // zilveren coin
           }
-          if(muntenupgrade === 2){
-          image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
-          image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
+          if (muntenupgrade === 2) {
+            image(img8, j * 80 + 25, i * 80 + 30, 80, 80);
+            image(img3, j * 80 + 25, i * 80 + 25, 80, 80); // gouden coin
           }
         }
         // ander gekleurd vakje
@@ -1452,10 +1512,10 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(level >= hoogsteLevel){
-      hoogsteLevel = 2;
+      if (level >= hoogsteLevel) {
+        hoogsteLevel = 2;
       }
-        
+
       // record tijd van level 1
       if (tijd1 > 0 && recordtijd1afgerond <= recordtijd1onafgerond) {
         recordtijd1onafgerond = 60 - tijd1;
@@ -1512,10 +1572,10 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(level >= hoogsteLevel){
-      hoogsteLevel = 3;
+      if (level >= hoogsteLevel) {
+        hoogsteLevel = 3;
       }
-      
+
       // record tijd van level 2
       if (tijd2 > 0 && recordtijd2afgerond <= recordtijd2onafgerond) {
         recordtijd2onafgerond = 50 - tijd2;
@@ -1572,10 +1632,10 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(level >= hoogsteLevel){
-      hoogsteLevel = 4;
+      if (level >= hoogsteLevel) {
+        hoogsteLevel = 4;
       }
-      
+
       // record tijd van level 3
       if (tijd3 > 0 && recordtijd3afgerond <= recordtijd3onafgerond) {
         recordtijd3onafgerond = 45 - tijd3;
@@ -1633,10 +1693,10 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(level >= hoogsteLevel){
-      hoogsteLevel = 5;
+      if (level >= hoogsteLevel) {
+        hoogsteLevel = 5;
       }
-      
+
       // record tijd van level 4
       if (tijd4 > 0 && recordtijd4afgerond <= recordtijd4onafgerond) {
         recordtijd4onafgerond = 30 - tijd4;
@@ -1696,7 +1756,7 @@ function draw() {
       fill(15, 173, 12);
       text("A", 715, 400);
       hoogsteLevel = 5;
-      
+
       // record tijd van level 5
       if (tijd5 > 0 && recordtijd5afgerond <= recordtijd5onafgerond) {
         recordtijd5onafgerond = 30 - tijd5;
