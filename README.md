@@ -24,8 +24,9 @@ Wat we nog willen toevoegen:
 1. Tijd records (klaar)
 2. Punten in de hele game (klaar)
 3. Punten shop (klaar)
-4. Levels kopen in shop
-5. Vermenigvuldigaar in shop voor punten
-6. Easter eggs
-7. Speciale muntjes
-8. Misschien geluiden
+4. Levels kopen in shop (klaar)
+5. Level achtergronden 6 t/m 10 nog doen
+6. Vermenigvuldigaar in shop voor punten (klaar)
+7. Easter eggs
+8. Speciale muntjes
+9. Misschien geluiden
