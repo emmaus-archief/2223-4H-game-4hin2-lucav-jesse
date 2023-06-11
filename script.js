@@ -132,44 +132,44 @@ var vakjes6 = [
   [1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 2, 0]
 ];
 var vakjes7 = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  [0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 1, 2],
+  [3, 0, 1, 2, 3, 0, 1, 0, 3, 0, 1, 0],
+  [1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0],
+  [0, 0, 3, 1, 0, 0, 0, 0, 0, 1, 2, 0],
+  [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+  [0, 1, 1, 0, 0, 0, 0, 0, 1, 3, 0, 0],
+  [0, 1, 3, 0, 0, 3, 1, 1, 0, 0, 1, 0],
+  [3, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 3]
 ];
 var vakjes8 = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  [2, 1, 0, 0, 0, 1, 1, 0, 1, 0, 3, 0],
+  [0, 1, 0, 3, 1, 2, 0, 3, 0, 0, 0, 1],
+  [0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 3],
+  [1, 0, 0, 3, 0, 0, 0, 0, 0, 1, 2, 0],
+  [0, 0, 1, 0, 0, 3, 0, 0, 3, 1, 0, 0],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [3, 2, 0, 1, 0, 0, 1, 1, 1, 0, 0, 3],
+  [0, 1, 0, 3, 0, 0, 0, 2, 3, 1, 0, 0]
 ];
 var vakjes9 = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  [3, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0],
+  [1, 2, 1, 3, 0, 1, 0, 3, 0, 1, 0, 0],
+  [0, 1, 0, 1, 1, 2, 1, 0, 0, 1, 2, 0],
+  [0, 3, 0, 0, 0, 0, 3, 0, 0, 1, 1, 0],
+  [1, 1, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
+  [0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 1, 0, 1, 2, 1, 0, 3, 1, 0, 0],
+  [0, 2, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0]
 ];
 var vakjes10 = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      [2, 3, 1, 3, 0, 0, 1, 0, 3, 0, 1, 2],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 3],
+      [1, 0, 1, 0, 1, 3, 0, 0, 1, 0, 1, 0],
+      [1, 3, 1, 3, 1, 2, 0, 3, 1, 0, 1, 0],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 3, 1, 0],
+      [1, 0, 1, 3, 1, 0, 1, 0, 1, 0, 1, 0],
+      [2, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 2]
 ];
 // een vakje is 80x80 pixels
 // het eerste vakje staat op x=25 en y=30
@@ -235,6 +235,16 @@ var img50;
 var img51;
 var img52;
 var img53;
+var img54;
+var img55;
+var img56;
+var img57;
+var img58;
+var img59;
+var img60;
+var img61;
+var img62;
+var img63;
 
 // tijd in de game
 var tijd1 = 60; // tijd in level 1
@@ -254,7 +264,7 @@ var hoogsteLevel = 1;
 
 var punten = 0;            // punten in de hele game (kan je gebruiken in de shop)
 var muntenupgrade = 0;     // gaat 1 omhoog als een upgrade voor munten is gekocht in shop
-var levelsupgrade = 1;     // gaat 1 omhoog als een upgrade voor levels is gekocht in shop
+var levelsupgrade = 0;     // gaat 1 omhoog als een upgrade voor levels is gekocht in shop
 var vermenigvuldiging = 0; // gaat 1 omhoog als een upgrade voor vermenigvuldiging is gekocht in 
                            //  shop
 
@@ -828,10 +838,10 @@ var levelScherm2 = function() {
   }
 
   // level 6
-  if (levelsupgrade === 1) {
+  if (levelsupgrade >= 1) {
     textSize(30);
     fill("yellow");
-    image(img30, 120, 150, 252, 184); // achtergrond
+    image(img54, 120, 150, 252, 184); // achtergrond
     image(img14, 216, 212, 80, 80);   // play button
     text("Level 6", 200, 360);
 
@@ -841,7 +851,7 @@ var levelScherm2 = function() {
     textSize(30);
 
     // ga level 6 spelen als je op play button klikt
-    if (mouseX > 216 && mouseX < 296 && mouseY > 212 && mouseY < 292 && levelsupgrade === 1) {
+    if (mouseX > 216 && mouseX < 296 && mouseY > 212 && mouseY < 292 && levelsupgrade >= 1) {
       if (mouseIsPressed === true) {
         spelStatus = SPELEN;
         level = 6;
@@ -851,17 +861,17 @@ var levelScherm2 = function() {
   }
   else {
     fill("white");
-    image(img33, 120, 150, 252, 184); // achtergrond
+    image(img55, 120, 150, 252, 184); // achtergrond
     image(img28, 131, 150, 230, 200); // lock
     textSize(20);
     text("Koop eerst levels upgrade 1", 130, 360);
   }
 
   // level 7
-  if (levelsupgrade === 2) {
+  if (levelsupgrade >= 2) {
     textSize(30);
     fill("yellow");
-    image(img32, 492, 150, 252, 184); // achtergrond
+    image(img56, 492, 150, 252, 184); // achtergrond
     image(img14, 588, 212, 80, 80);   // play button
     text("Level 7", 572, 360);
 
@@ -871,7 +881,7 @@ var levelScherm2 = function() {
     textSize(30);
 
     // ga level 7 spelen als je op play button klikt
-    if (mouseX > 588 && mouseX < 668 && mouseY > 212 && mouseY < 292 && levelsupgrade === 2) {
+    if (mouseX > 588 && mouseX < 668 && mouseY > 212 && mouseY < 292 && levelsupgrade >= 2) {
       if (mouseIsPressed === true) {
         spelStatus = SPELEN;
         level = 7;
@@ -881,17 +891,17 @@ var levelScherm2 = function() {
   }
   else {
     fill("white");
-    image(img33, 492, 150, 252, 184); // achtergrond
+    image(img57, 492, 150, 252, 184); // achtergrond
     image(img28, 503, 150, 230, 200); // lock
     textSize(20);
     text("Koop eerst levels upgrade 2", 502, 360);
   }
 
-   // level 8
-  if (levelsupgrade === 3) {
+  // level 8
+  if (levelsupgrade >= 3) {
     textSize(30);
     fill("yellow");
-    image(img34, 864, 150, 252, 184); // achtergrond
+    image(img58, 864, 150, 252, 184); // achtergrond
     image(img14, 960, 212, 80, 80);   // play button
     text("Level 8", 944, 360);
 
@@ -901,7 +911,7 @@ var levelScherm2 = function() {
     textSize(30);
 
     // ga level 8 spelen als je op play button klikt
-    if (mouseX > 960 && mouseX < 1040 && mouseY > 212 && mouseY < 292 && levelsupgrade === 3) {
+    if (mouseX > 960 && mouseX < 1040 && mouseY > 212 && mouseY < 292 && levelsupgrade >= 3) {
       if (mouseIsPressed === true) {
         spelStatus = SPELEN;
         level = 8;
@@ -911,17 +921,17 @@ var levelScherm2 = function() {
   }
   else {
     fill("white");
-    image(img35, 864, 150, 252, 184); // achtergrond
+    image(img59, 864, 150, 252, 184); // achtergrond
     image(img28, 875, 150, 230, 200); // lock
     textSize(20);
     text("Koop eerst levels upgrade 3", 874, 360);
   }
 
   // level 9
-  if (levelsupgrade === 4) {
+  if (levelsupgrade >= 4) {
     textSize(30);
     fill("yellow");
-    image(img36, 346, 400, 252, 184); // achtergrond
+    image(img60, 346, 400, 252, 184); // achtergrond
     image(img14, 440, 462, 80, 80);   // play button
     text("Level 9", 426, 610);
 
@@ -931,7 +941,7 @@ var levelScherm2 = function() {
     textSize(30);
 
     // ga level 9 spelen als je op play button klikt
-    if (mouseX > 426 && mouseX < 506 && mouseY > 462 && mouseY < 542 && levelsupgrade === 4) {
+    if (mouseX > 426 && mouseX < 506 && mouseY > 462 && mouseY < 542 && levelsupgrade >= 4) {
       if (mouseIsPressed === true) {
         spelStatus = SPELEN;
         level = 9;
@@ -941,17 +951,17 @@ var levelScherm2 = function() {
   }
   else {
     fill("white");
-    image(img37, 346, 400, 252, 184); // achtergrond
+    image(img61, 346, 400, 252, 184); // achtergrond
     image(img28, 357, 400, 230, 200); // lock
     textSize(20);
     text("Koop eerst levels upgrade 4", 356, 610);
   }
 
   // level 10
-  if (levelsupgrade === 5) {
+  if (levelsupgrade >= 5) {
     textSize(30);
     fill("yellow");
-    image(img38, 682, 400, 252, 184); // achtergrond
+    image(img62, 682, 400, 252, 184); // achtergrond
     image(img14, 778, 462, 80, 80);   // play button
     text("Level 10", 762, 610);
 
@@ -961,7 +971,7 @@ var levelScherm2 = function() {
     textSize(30);
 
     // ga level 10 spelen als je op play button klikt
-    if (mouseX > 778 && mouseX < 858 && mouseY > 462 && mouseY < 542 && levelsupgrade === 5) {
+    if (mouseX > 778 && mouseX < 858 && mouseY > 462 && mouseY < 542 && levelsupgrade >= 5) {
       if (mouseIsPressed === true) {
         spelStatus = SPELEN;
         level = 10;
@@ -971,12 +981,12 @@ var levelScherm2 = function() {
   }
   else {
     fill("white");
-    image(img39, 682, 400, 252, 184); // achtergrond
+    image(img63, 682, 400, 252, 184); // achtergrond
     image(img28, 693, 400, 230, 200); // lock
     textSize(20);
     text("Koop eerst levels upgrade 5", 692, 610);
   }
-  
+
 }
 /** 
  * Retry scherm om de game opnieuw te beginnen
@@ -2230,14 +2240,14 @@ function resetGlobalVariables() {
     spelerX = 500;
     spelerY = 355;
     vakjes7 = [
-      [0, 0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 0],
-      [1, 1, 3, 0, 0, 0, 1, 0, 0, 0, 3, 0],
-      [3, 2, 1, 0, 0, 0, 0, 3, 0, 0, 0, 1],
-      [0, 1, 1, 0, 0, 3, 0, 0, 1, 3, 0, 0],
-      [0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0],
-      [3, 1, 0, 0, 0, 0, 0, 3, 1, 0, 1, 3],
-      [0, 1, 2, 1, 3, 0, 1, 0, 0, 1, 0, 0],
-      [1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 2, 0]
+      [0, 0, 3, 1, 0, 0, 0, 0, 0, 0, 1, 2],
+      [3, 0, 1, 2, 3, 0, 1, 0, 3, 0, 1, 0],
+      [1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0],
+      [0, 0, 3, 1, 0, 0, 0, 0, 0, 1, 2, 0],
+      [0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 1, 1, 0, 0, 0, 0, 0, 1, 3, 0, 0],
+      [0, 1, 3, 0, 0, 3, 1, 1, 0, 0, 1, 0],
+      [3, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 3]
     ];
   } // reset alles voor level 7
   if (level === 8) {
@@ -2249,14 +2259,14 @@ function resetGlobalVariables() {
     spelerX = 500;
     spelerY = 355;
     vakjes8 = [
-      [0, 0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 0],
-      [1, 1, 3, 0, 0, 0, 1, 0, 0, 0, 3, 0],
-      [3, 2, 1, 0, 0, 0, 0, 3, 0, 0, 0, 1],
-      [0, 1, 1, 0, 0, 3, 0, 0, 1, 3, 0, 0],
-      [0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0],
-      [3, 1, 0, 0, 0, 0, 0, 3, 1, 0, 1, 3],
-      [0, 1, 2, 1, 3, 0, 1, 0, 0, 1, 0, 0],
-      [1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 2, 0]
+      [2, 1, 0, 0, 0, 1, 1, 0, 1, 0, 3, 0],
+      [0, 1, 0, 3, 1, 2, 0, 3, 0, 0, 0, 1],
+      [0, 3, 0, 0, 0, 1, 1, 1, 0, 0, 1, 3],
+      [1, 0, 0, 3, 0, 0, 0, 0, 0, 1, 2, 0],
+      [0, 0, 1, 0, 0, 3, 0, 0, 3, 1, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [3, 2, 0, 1, 0, 0, 1, 1, 1, 0, 0, 3],
+      [0, 1, 0, 3, 0, 0, 0, 2, 3, 1, 0, 0]
     ];
   } // reset alles voor level 8
   if (level === 9) {
@@ -2268,14 +2278,14 @@ function resetGlobalVariables() {
     spelerX = 500;
     spelerY = 355;
     vakjes9 = [
-      [0, 0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 0],
-      [1, 1, 3, 0, 0, 0, 1, 0, 0, 0, 3, 0],
-      [3, 2, 1, 0, 0, 0, 0, 3, 0, 0, 0, 1],
-      [0, 1, 1, 0, 0, 3, 0, 0, 1, 3, 0, 0],
-      [0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0],
-      [3, 1, 0, 0, 0, 0, 0, 3, 1, 0, 1, 3],
-      [0, 1, 2, 1, 3, 0, 1, 0, 0, 1, 0, 0],
-      [1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 2, 0]
+      [3, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0],
+      [1, 2, 1, 3, 0, 1, 0, 3, 0, 1, 0, 0],
+      [0, 1, 0, 1, 1, 2, 1, 0, 0, 1, 2, 0],
+      [0, 3, 0, 0, 0, 0, 3, 0, 0, 1, 1, 0],
+      [1, 1, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0],
+      [0, 3, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 1, 0, 1, 2, 1, 0, 3, 1, 0, 0],
+      [0, 2, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0]
     ];
   } // reset alles voor level 9
   if (level === 10) {
@@ -2287,14 +2297,14 @@ function resetGlobalVariables() {
     spelerX = 500;
     spelerY = 355;
     vakjes10 = [
-      [0, 0, 0, 0, 1, 0, 2, 1, 0, 1, 1, 0],
-      [1, 1, 3, 0, 0, 0, 1, 0, 0, 0, 3, 0],
-      [3, 2, 1, 0, 0, 0, 0, 3, 0, 0, 0, 1],
-      [0, 1, 1, 0, 0, 3, 0, 0, 1, 3, 0, 0],
-      [0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0],
-      [3, 1, 0, 0, 0, 0, 0, 3, 1, 0, 1, 3],
-      [0, 1, 2, 1, 3, 0, 1, 0, 0, 1, 0, 0],
-      [1, 1, 0, 0, 0, 3, 0, 0, 0, 1, 2, 0]
+      [2, 3, 1, 3, 0, 0, 1, 0, 3, 0, 1, 2],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 3],
+      [1, 0, 1, 0, 1, 3, 0, 0, 1, 0, 1, 0],
+      [1, 3, 1, 3, 1, 2, 0, 3, 1, 0, 1, 0],
+      [1, 0, 1, 0, 1, 0, 1, 0, 1, 3, 1, 0],
+      [1, 0, 1, 3, 1, 0, 1, 0, 1, 0, 1, 0],
+      [2, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 2]
     ];
   } // reset alles voor level 10
 }
@@ -2362,6 +2372,16 @@ function preload() {
   img51 = loadImage('afbeeldingen/multiplier1.png');
   img52 = loadImage('afbeeldingen/plus1.png');
   img53 = loadImage('afbeeldingen/returnbutton2.png');
+  img54 = loadImage('afbeeldingen/level6normaal.png');
+  img55 = loadImage('afbeeldingen/level6zwartenwit.png');
+  img56 = loadImage('afbeeldingen/level7normaal.png');
+  img57 = loadImage('afbeeldingen/level7zwartenwit.png');
+  img58 = loadImage('afbeeldingen/level8normaal.png');
+  img59 = loadImage('afbeeldingen/level8zwartenwit.png');
+  img60 = loadImage('afbeeldingen/level9normaal.png');
+  img61 = loadImage('afbeeldingen/level9zwartenwit.png');
+  img62 = loadImage('afbeeldingen/level10normaal.png');
+  img63 = loadImage('afbeeldingen/level10zwartenwit.png');
 }
 
 /**
@@ -2675,26 +2695,26 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(levelsupgrade === 1 && level >= hoogsteLevel){
+      if (levelsupgrade === 1 && level >= hoogsteLevel) {
         hoogsteLevel = 6;
-        
+
         image(img31, 340, 420, 170, 170);   // volgend level button
-      // volgend level button
-      if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
-        if (mouseIsPressed === true) {
-          spelStatus = SPELEN;
-          level = hoogsteLevel;
-          resetGlobalVariables();
-          muntjes1 = 0;
-          muntjes2 = 0;
-          muntjes3 = 0;
-          muntjes4 = 0;
-          muntjes5 = 0;
+        // volgend level button
+        if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+          if (mouseIsPressed === true) {
+            spelStatus = SPELEN;
+            level = hoogsteLevel;
+            resetGlobalVariables();
+            muntjes1 = 0;
+            muntjes2 = 0;
+            muntjes3 = 0;
+            muntjes4 = 0;
+            muntjes5 = 0;
+          }
         }
       }
-      }
-      else{
-      hoogsteLevel = 5;
+      else {
+        hoogsteLevel = 5;
       }
 
       // record tijd van level 5
@@ -2741,26 +2761,26 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(levelsupgrade === 2 && level >= hoogsteLevel){
-        
+      if (levelsupgrade === 2 && level >= hoogsteLevel) {
+
         image(img31, 340, 420, 170, 170);   // volgend level button
-      // volgend level button
-      if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
-        if (mouseIsPressed === true) {
-          spelStatus = SPELEN;
-          level = hoogsteLevel;
-          resetGlobalVariables();
-          muntjes1 = 0;
-          muntjes2 = 0;
-          muntjes3 = 0;
-          muntjes4 = 0;
-          muntjes5 = 0;
-          muntjes6 = 0;
+        // volgend level button
+        if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+          if (mouseIsPressed === true) {
+            spelStatus = SPELEN;
+            level = hoogsteLevel;
+            resetGlobalVariables();
+            muntjes1 = 0;
+            muntjes2 = 0;
+            muntjes3 = 0;
+            muntjes4 = 0;
+            muntjes5 = 0;
+            muntjes6 = 0;
+          }
         }
       }
-      }
-      else{
-      hoogsteLevel = 5;
+      else {
+        hoogsteLevel = 5;
       }
 
       // record tijd van level 6
@@ -2807,27 +2827,27 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(levelsupgrade === 3 && level >= hoogsteLevel){
-        
+      if (levelsupgrade === 3 && level >= hoogsteLevel) {
+
         image(img31, 340, 420, 170, 170);   // volgend level button
-      // volgend level button
-      if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
-        if (mouseIsPressed === true) {
-          spelStatus = SPELEN;
-          level = hoogsteLevel;
-          resetGlobalVariables();
-          muntjes1 = 0;
-          muntjes2 = 0;
-          muntjes3 = 0;
-          muntjes4 = 0;
-          muntjes5 = 0;
-          muntjes6 = 0;
-          muntjes7 = 0;
+        // volgend level button
+        if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+          if (mouseIsPressed === true) {
+            spelStatus = SPELEN;
+            level = hoogsteLevel;
+            resetGlobalVariables();
+            muntjes1 = 0;
+            muntjes2 = 0;
+            muntjes3 = 0;
+            muntjes4 = 0;
+            muntjes5 = 0;
+            muntjes6 = 0;
+            muntjes7 = 0;
+          }
         }
       }
-      }
-      else{
-      hoogsteLevel = 5;
+      else {
+        hoogsteLevel = 5;
       }
 
       // record tijd van level 7
@@ -2874,28 +2894,28 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(levelsupgrade === 4 && level >= hoogsteLevel){
-        
+      if (levelsupgrade === 4 && level >= hoogsteLevel) {
+
         image(img31, 340, 420, 170, 170);   // volgend level button
-      // volgend level button
-      if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
-        if (mouseIsPressed === true) {
-          spelStatus = SPELEN;
-          level = hoogsteLevel;
-          resetGlobalVariables();
-          muntjes1 = 0;
-          muntjes2 = 0;
-          muntjes3 = 0;
-          muntjes4 = 0;
-          muntjes5 = 0;
-          muntjes6 = 0;
-          muntjes7 = 0;
-          muntjes8 = 0;
+        // volgend level button
+        if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+          if (mouseIsPressed === true) {
+            spelStatus = SPELEN;
+            level = hoogsteLevel;
+            resetGlobalVariables();
+            muntjes1 = 0;
+            muntjes2 = 0;
+            muntjes3 = 0;
+            muntjes4 = 0;
+            muntjes5 = 0;
+            muntjes6 = 0;
+            muntjes7 = 0;
+            muntjes8 = 0;
+          }
         }
       }
-      }
-      else{
-      hoogsteLevel = 5;
+      else {
+        hoogsteLevel = 5;
       }
 
       // record tijd van level 8
@@ -2942,29 +2962,29 @@ function draw() {
       text("Score:", 520, 400);
       fill(15, 173, 12);
       text("A", 715, 400);
-      if(levelsupgrade === 5 && level >= hoogsteLevel){
-        
+      if (levelsupgrade === 5 && level >= hoogsteLevel) {
+
         image(img31, 340, 420, 170, 170);   // volgend level button
-      // volgend level button
-      if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
-        if (mouseIsPressed === true) {
-          spelStatus = SPELEN;
-          level = hoogsteLevel;
-          resetGlobalVariables();
-          muntjes1 = 0;
-          muntjes2 = 0;
-          muntjes3 = 0;
-          muntjes4 = 0;
-          muntjes5 = 0;
-          muntjes6 = 0;
-          muntjes7 = 0;
-          muntjes8 = 0;
-          muntjes9 = 0;
+        // volgend level button
+        if (mouseX > 340 && mouseX < 510 && mouseY > 420 && mouseY < 590) {
+          if (mouseIsPressed === true) {
+            spelStatus = SPELEN;
+            level = hoogsteLevel;
+            resetGlobalVariables();
+            muntjes1 = 0;
+            muntjes2 = 0;
+            muntjes3 = 0;
+            muntjes4 = 0;
+            muntjes5 = 0;
+            muntjes6 = 0;
+            muntjes7 = 0;
+            muntjes8 = 0;
+            muntjes9 = 0;
+          }
         }
       }
-      }
-      else{
-      hoogsteLevel = 5;
+      else {
+        hoogsteLevel = 5;
       }
 
       // record tijd van level 9
